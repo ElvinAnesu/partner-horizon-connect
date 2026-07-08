@@ -1,5 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
+import logoAsset from "@/assets/HESU-Logo_1.png.asset.json";
+
 
 const nav = [
   { to: "/", label: "Home" },
@@ -14,11 +16,15 @@ export function SiteHeader() {
     <header className="sticky top-0 z-50 border-b border-border/60 bg-background/85 backdrop-blur-md">
       <div className="mx-auto grid max-w-[1400px] grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-5 py-4 md:px-10">
         <Link to="/" className="flex min-w-0 items-center gap-3">
-          <span className="grid h-9 w-9 shrink-0 place-items-center rounded-sm bg-ink text-cream font-display text-lg font-black">H</span>
-          <span className="truncate font-display text-lg font-black tracking-tight">
-            HESU<span className="text-amber">.</span>
-          </span>
+          <img
+            src={logoAsset.url}
+            alt="Hesu Investment Ltd"
+            width={200}
+            height={60}
+            className="h-10 w-auto object-contain"
+          />
         </Link>
+
         <nav className="hidden items-center gap-1 md:flex">
           {nav.map((n) => (
             <Link
@@ -74,9 +80,15 @@ export function SiteFooter() {
       <div className="mx-auto grid max-w-[1400px] gap-12 px-5 py-16 md:grid-cols-[1.4fr_1fr_1fr_1fr] md:px-10">
         <div>
           <div className="flex items-center gap-3">
-            <span className="grid h-9 w-9 place-items-center rounded-sm bg-amber text-ink font-display text-lg font-black">H</span>
-            <span className="font-display text-lg font-black">HESU<span className="text-amber">.</span></span>
+            <img
+              src={logoAsset.url}
+              alt="Hesu Investment Ltd"
+              width={200}
+              height={60}
+              className="h-10 w-auto object-contain"
+            />
           </div>
+
           <p className="mt-5 max-w-xs text-sm text-cream/70">
             Integrated logistics and supply chain solutions powering trade across Tanzania and East Africa.
           </p>

@@ -98,11 +98,12 @@
 @utility display-xl {
   font-family: var(--font-display);
   font-weight: 900;
-  font-size: clamp(3rem, 9vw, 8rem);
-  line-height: 0.9;
-  letter-spacing: -0.04em;
+  font-size: clamp(1.5rem, 4.5vw, 4rem);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
   text-transform: uppercase;
 }
+
 
 @utility eyebrow {
   font-family: var(--font-mono);
