@@ -49,18 +49,38 @@ const partners = [
 ];
 
 function Home() {
+  const [slide, setSlide] = useState(0);
+  useEffect(() => {
+    const id = setInterval(() => setSlide((s) => (s + 1) % heroSlides.length), 5000);
+    return () => clearInterval(id);
+  }, []);
   return (
     <>
       {/* HERO */}
       <section className="relative isolate overflow-hidden bg-ink text-cream">
-        <img
-          src={heroPort}
-          alt="Container freight terminal at golden hour"
-          width={1920}
-          height={1280}
-          className="absolute inset-0 -z-10 h-full w-full object-cover opacity-55"
-        />
+        <div className="absolute inset-0 -z-10">
+          {heroSlides.map((s, i) => (
+            <img
+              key={i}
+              src={s.src}
+              alt={s.alt}
+              width={1920}
+              height={1280}
+              className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-1000 ease-in-out ${i === slide ? "opacity-55" : "opacity-0"}`}
+            />
+          ))}
+        </div>
         <div className="absolute inset-0 -z-10 bg-gradient-to-br from-ink via-ink/70 to-transparent" />
+        <div className="absolute bottom-5 right-5 z-10 flex gap-2 md:bottom-8 md:right-10">
+          {heroSlides.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setSlide(i)}
+              aria-label={`Go to slide ${i + 1}`}
+              className={`h-1.5 rounded-full transition-all ${i === slide ? "w-8 bg-amber" : "w-4 bg-cream/40 hover:bg-cream/70"}`}
+            />
+          ))}
+        </div>
         <div className="mx-auto grid max-w-[1400px] gap-16 px-5 pb-24 pt-20 md:grid-cols-[1.6fr_1fr] md:px-10 md:pb-32 md:pt-32">
           <div>
             <p className="eyebrow text-amber">Hesu Investment Ltd · Tanzania</p>
