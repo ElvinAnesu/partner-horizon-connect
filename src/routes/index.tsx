@@ -1,9 +1,21 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
 import heroPort from "@/assets/hero-port.jpg";
 import serviceIcd from "@/assets/service-icd.jpg";
 import serviceCfs from "@/assets/service-cfs.jpg";
 import serviceDistribution from "@/assets/service-distribution.jpg";
 import aboutCta from "@/assets/about-cta.jpg";
+import teamInspection from "@/assets/hesu-team-inspection.jpg.asset.json";
+import teamDrill from "@/assets/hesu-team-drill.jpg.asset.json";
+
+const heroSlides = [
+  { src: heroPort, alt: "Container freight terminal at golden hour" },
+  { src: teamInspection.url, alt: "Hesu operations team inspection" },
+  { src: serviceIcd, alt: "Inland container depot" },
+  { src: teamDrill.url, alt: "Hesu security team on drill" },
+  { src: serviceCfs, alt: "Container freight station operations" },
+  { src: serviceDistribution, alt: "Distribution and trucking fleet" },
+];
 
 export const Route = createFileRoute("/")({
   head: () => ({
