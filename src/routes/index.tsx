@@ -208,6 +208,61 @@ function Home() {
         </div>
       </section>
 
+      {/* SECURITY */}
+      <section className="bg-background">
+        <div className="mx-auto grid max-w-[1400px] gap-10 px-5 py-24 md:grid-cols-2 md:gap-16 md:px-10 md:py-32">
+          <div className="flex flex-col justify-center">
+            <p className="eyebrow text-ink-soft">/ Cargo security</p>
+            <h2 className="display-xl mt-4">Your cargo,<br /><span className="text-amber">guarded</span> around the clock.</h2>
+            <p className="mt-6 max-w-lg text-base leading-relaxed text-ink-soft">
+              Every yard, warehouse and convoy is protected by our in-house trained
+              security force — recruited, drilled and deployed to Hesu standards. From
+              gate control to armed escort, we treat every container as if it were our own.
+            </p>
+            <div className="mt-8 grid grid-cols-2 gap-6 border-t border-border pt-6">
+              {[
+                { k: "24/7", v: "Manned guarding & CCTV" },
+                { k: "100%", v: "Vetted, uniformed personnel" },
+                { k: "In-house", v: "Drill & discipline training" },
+                { k: "Zero", v: "Tolerance for pilferage" },
+              ].map((s) => (
+                <div key={s.v}>
+                  <div className="font-display text-2xl font-black text-ink">{s.k}</div>
+                  <div className="mt-1 text-xs text-ink-soft">{s.v}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="grid grid-cols-2 gap-3">
+            <div className="relative col-span-2 aspect-[16/9] overflow-hidden rounded-sm">
+              <img
+                src={teamDrill.url}
+                alt="Hesu security team on drill formation"
+                loading="lazy"
+                className="h-full w-full object-cover"
+              />
+              <span className="absolute bottom-3 left-3 rounded-sm bg-ink/80 px-3 py-1 font-mono text-[10px] uppercase tracking-widest text-cream">Daily drills</span>
+            </div>
+            <div className="relative aspect-square overflow-hidden rounded-sm">
+              <img
+                src={teamInspection.url}
+                alt="Security inspection at Hesu yard"
+                loading="lazy"
+                className="h-full w-full object-cover"
+              />
+              <span className="absolute bottom-3 left-3 rounded-sm bg-ink/80 px-3 py-1 font-mono text-[10px] uppercase tracking-widest text-cream">Inspection</span>
+            </div>
+            <div className="relative aspect-square overflow-hidden rounded-sm bg-ink p-6 text-cream">
+              <p className="eyebrow text-amber">/ Standard</p>
+              <p className="mt-3 font-display text-xl font-black leading-tight">Trained. Uniformed. Accountable.</p>
+              <p className="mt-3 text-xs text-cream/70">Every guard on shift is logged, radio-linked and supervised.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+
       {/* VALUES */}
       <section className="mx-auto max-w-[1400px] px-5 py-24 md:px-10 md:py-32">
         <p className="eyebrow text-ink-soft">/ Core values</p>
