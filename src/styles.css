@@ -117,7 +117,55 @@
   animation: marquee 40s linear infinite;
 }
 
+@utility marquee-track-slow {
+  animation: marquee 60s linear infinite;
+}
+
+@utility marquee-track-reverse {
+  animation: marquee-reverse 50s linear infinite;
+}
+
+@utility ken-burns {
+  animation: kenburns 18s ease-in-out infinite alternate;
+}
+
+@utility float-slow {
+  animation: floaty 6s ease-in-out infinite;
+}
+
+@utility reveal-up {
+  animation: revealUp 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+@utility spin-slow {
+  animation: spinSlow 22s linear infinite;
+}
+
+@utility tilt-hover {
+  transition: transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.tilt-hover:hover { transform: perspective(900px) rotateX(2deg) rotateY(-3deg) translateY(-6px); }
+
 @keyframes marquee {
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
+}
+@keyframes marquee-reverse {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
+}
+@keyframes kenburns {
+  0% { transform: scale(1) translate(0,0); }
+  100% { transform: scale(1.12) translate(-1.5%, -1.5%); }
+}
+@keyframes floaty {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+@keyframes revealUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes spinSlow {
+  to { transform: rotate(360deg); }
 }
