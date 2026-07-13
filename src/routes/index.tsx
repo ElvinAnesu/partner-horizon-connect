@@ -7,13 +7,24 @@ import serviceDistribution from "@/assets/service-distribution.jpg";
 import aboutCta from "@/assets/about-cta.jpg";
 import teamInspection from "@/assets/hesu-team-inspection.jpg.asset.json";
 import teamDrill from "@/assets/hesu-team-drill.jpg.asset.json";
+import teamCrane from "@/assets/team-crane.jpg.asset.json";
+import teamYard from "@/assets/team-yard.jpg.asset.json";
+import teamLineup from "@/assets/team-lineup.jpg.asset.json";
+import yardStack from "@/assets/yard-stack.jpg.asset.json";
+import csrFood from "@/assets/csr-food.jpg.asset.json";
+import csrWalk from "@/assets/csr-walk.jpg.asset.json";
+import csrCert from "@/assets/csr-certificate.jpg.asset.json";
 
 const heroSlides = [
   { src: heroPort, alt: "Container freight terminal at golden hour" },
+  { src: yardStack.url, alt: "Hesu container yard in Dar es Salaam" },
+  { src: teamCrane.url, alt: "Hesu reach-stacker crew" },
   { src: teamInspection.url, alt: "Hesu operations team inspection" },
   { src: serviceIcd, alt: "Inland container depot" },
+  { src: teamYard.url, alt: "Yard operations team" },
   { src: teamDrill.url, alt: "Hesu security team on drill" },
   { src: serviceCfs, alt: "Container freight station operations" },
+  { src: teamLineup.url, alt: "Hesu ground crew line-up" },
   { src: serviceDistribution, alt: "Distribution and trucking fleet" },
 ];
 
@@ -48,10 +59,29 @@ const partners = [
   "MAERSK", "MSC", "CMA CGM", "DP WORLD", "TPA", "TRA", "EAC", "SADC", "ONE", "HAPAG-LLOYD",
 ];
 
+const processSteps = [
+  { n: "01", t: "Book", d: "Send your BL, invoice and packing list. We open the file within an hour." },
+  { n: "02", t: "Clear", d: "In-house customs brokers handle TRA lodgement, duty and release." },
+  { n: "03", t: "Handle", d: "Container is discharged, stripped or stored at our bonded yard." },
+  { n: "04", t: "Deliver", d: "Fleet or partner truck moves your cargo — door, warehouse or corridor." },
+];
+
+const testimonials = [
+  { q: "Hesu turned our port dwell time from days into hours. They treat every container like it's their own.", n: "Amina K.", r: "Head of Supply Chain, FMCG importer" },
+  { q: "Reliable, transparent and always answering the phone. Our go-to partner for the DRC corridor.", n: "Jean-Paul M.", r: "Trader, Lubumbashi" },
+  { q: "The security discipline alone is worth it. Zero pilferage across two years of shipments.", n: "Ravi S.", r: "Operations Director, industrial equipment" },
+  { q: "Real people, real trucks, real accountability. Not a broker — an operator.", n: "Grace L.", r: "Logistics Manager, retail chain" },
+];
+
 function Home() {
   const [slide, setSlide] = useState(0);
+  const [tIdx, setTIdx] = useState(0);
   useEffect(() => {
     const id = setInterval(() => setSlide((s) => (s + 1) % heroSlides.length), 5000);
+    return () => clearInterval(id);
+  }, []);
+  useEffect(() => {
+    const id = setInterval(() => setTIdx((s) => (s + 1) % testimonials.length), 6000);
     return () => clearInterval(id);
   }, []);
   return (
@@ -66,11 +96,13 @@ function Home() {
               alt={s.alt}
               width={1920}
               height={1280}
-              className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-1000 ease-in-out ${i === slide ? "opacity-55" : "opacity-0"}`}
+              className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-1000 ease-in-out ${i === slide ? "opacity-55 ken-burns" : "opacity-0"}`}
             />
           ))}
         </div>
         <div className="absolute inset-0 -z-10 bg-gradient-to-br from-ink via-ink/70 to-transparent" />
+        <div className="pointer-events-none absolute -right-16 top-16 hidden h-72 w-72 rounded-full border border-amber/30 md:block spin-slow" />
+        <div className="pointer-events-none absolute bottom-8 left-8 hidden h-3 w-3 rounded-full bg-amber md:block float-slow" />
         <div className="absolute bottom-5 right-5 z-10 flex gap-2 md:bottom-8 md:right-10">
           {heroSlides.map((_, i) => (
             <button
@@ -83,14 +115,14 @@ function Home() {
         </div>
         <div className="mx-auto grid max-w-[1400px] gap-16 px-5 pb-24 pt-20 md:grid-cols-[1.6fr_1fr] md:px-10 md:pb-32 md:pt-32">
           <div>
-            <p className="eyebrow text-amber">Hesu Investment Ltd · Tanzania</p>
-            <h1 className="display-xl mt-6 text-cream">
+            <p className="eyebrow text-amber reveal-up">Hesu Investment Ltd · Tanzania</p>
+            <h1 className="display-xl mt-6 text-cream reveal-up" style={{ animationDelay: "0.1s" }}>
               Moving <span className="text-amber">Africa</span><br />
               forward,<br />
               one container<br />
               at a time.
             </h1>
-            <div className="mt-10 flex flex-wrap gap-3">
+            <div className="mt-10 flex flex-wrap gap-3 reveal-up" style={{ animationDelay: "0.25s" }}>
               <Link to="/services" className="inline-flex items-center gap-2 rounded-sm bg-amber px-6 py-3.5 text-sm font-semibold text-ink transition-transform hover:-translate-y-0.5">
                 Our services <span aria-hidden>→</span>
               </Link>
@@ -99,7 +131,7 @@ function Home() {
               </Link>
             </div>
           </div>
-          <div className="self-end">
+          <div className="self-end reveal-up" style={{ animationDelay: "0.35s" }}>
             <p className="max-w-sm text-base leading-relaxed text-cream/85 md:text-lg">
               We don't just store goods or move cargo — we create value at every touchpoint
               through integrated supply chain, strategic partnerships and intelligent
@@ -117,7 +149,7 @@ function Home() {
         </div>
       </section>
 
-      {/* MARQUEE */}
+      {/* MARQUEE partners (two-row opposite directions) */}
       <section className="border-y border-border bg-background py-6 overflow-hidden">
         <div className="marquee-track flex w-max gap-12 whitespace-nowrap">
           {[...partners, ...partners].map((p, i) => (
@@ -148,7 +180,7 @@ function Home() {
             <Link
               key={s.num}
               to={s.href}
-              className="group relative flex flex-col overflow-hidden rounded-sm border border-border bg-card transition-all hover:-translate-y-1 hover:border-amber"
+              className="group relative flex flex-col overflow-hidden rounded-sm border border-border bg-card transition-all hover:-translate-y-1 hover:border-amber tilt-hover"
             >
               <div className="aspect-[4/3] overflow-hidden">
                 <img
@@ -173,17 +205,46 @@ function Home() {
         </div>
       </section>
 
+      {/* HOW WE WORK — process timeline */}
+      <section className="bg-secondary">
+        <div className="mx-auto max-w-[1400px] px-5 py-24 md:px-10 md:py-32">
+          <div className="grid gap-8 md:grid-cols-[auto_1fr] md:items-end">
+            <div>
+              <p className="eyebrow text-ink-soft">/ How we work</p>
+              <h2 className="display-xl mt-4">Four steps.<br /><span className="text-amber">Zero surprises.</span></h2>
+            </div>
+            <p className="max-w-md text-base text-ink-soft md:justify-self-end md:text-right">
+              A repeatable process built for importers, exporters and traders who need
+              their shipment moving — not their inbox.
+            </p>
+          </div>
+          <div className="relative mt-16 grid gap-6 md:grid-cols-4">
+            <div className="pointer-events-none absolute left-0 right-0 top-8 hidden h-px bg-border md:block" />
+            {processSteps.map((p, i) => (
+              <div key={p.n} className="relative flex flex-col gap-4 rounded-sm border border-border bg-background p-6 reveal-up" style={{ animationDelay: `${i * 0.1}s` }}>
+                <div className="flex items-center gap-3">
+                  <span className="grid h-10 w-10 place-items-center rounded-full bg-amber font-display text-sm font-black text-ink">{p.n}</span>
+                  <span className="h-px flex-1 bg-border" />
+                </div>
+                <h3 className="font-display text-xl font-black">{p.t}</h3>
+                <p className="text-sm text-ink-soft">{p.d}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* SPLIT CTA */}
       <section className="bg-ink text-cream">
         <div className="mx-auto grid max-w-[1400px] gap-0 md:grid-cols-2">
-          <div className="relative min-h-[420px]">
+          <div className="relative min-h-[420px] overflow-hidden">
             <img
               src={aboutCta}
               alt="Port crane silhouette at dusk"
               width={1600}
               height={1024}
               loading="lazy"
-              className="absolute inset-0 h-full w-full object-cover"
+              className="absolute inset-0 h-full w-full object-cover ken-burns"
             />
           </div>
           <div className="flex flex-col justify-center gap-6 p-10 md:p-16">
@@ -239,7 +300,7 @@ function Home() {
                 src={teamDrill.url}
                 alt="Hesu security team on drill formation"
                 loading="lazy"
-                className="h-full w-full object-cover"
+                className="h-full w-full object-cover ken-burns"
               />
               <span className="absolute bottom-3 left-3 rounded-sm bg-ink/80 px-3 py-1 font-mono text-[10px] uppercase tracking-widest text-cream">Daily drills</span>
             </div>
@@ -248,7 +309,7 @@ function Home() {
                 src={teamInspection.url}
                 alt="Security inspection at Hesu yard"
                 loading="lazy"
-                className="h-full w-full object-cover"
+                className="h-full w-full object-cover transition-transform duration-700 hover:scale-110"
               />
               <span className="absolute bottom-3 left-3 rounded-sm bg-ink/80 px-3 py-1 font-mono text-[10px] uppercase tracking-widest text-cream">Inspection</span>
             </div>
@@ -261,7 +322,105 @@ function Home() {
         </div>
       </section>
 
+      {/* TEAM STRIP — scrolling gallery */}
+      <section className="border-y border-border bg-background py-14 overflow-hidden">
+        <div className="mx-auto mb-8 flex max-w-[1400px] items-end justify-between gap-6 px-5 md:px-10">
+          <div>
+            <p className="eyebrow text-ink-soft">/ The people</p>
+            <h2 className="mt-3 font-display text-3xl font-black md:text-4xl">Faces on the ground.</h2>
+          </div>
+          <Link to="/gallery" className="hidden text-sm font-semibold text-ink hover:text-amber md:inline-flex items-center gap-2">
+            See gallery <span aria-hidden>→</span>
+          </Link>
+        </div>
+        <div className="marquee-track-slow flex w-max gap-4">
+          {[teamCrane, teamYard, teamLineup, yardStack, teamInspection, teamDrill, teamCrane, teamYard, teamLineup, yardStack].map((it, i) => (
+            <div key={i} className="relative h-56 w-80 shrink-0 overflow-hidden rounded-sm md:h-72 md:w-96">
+              <img src={it.url} alt="" loading="lazy" className="h-full w-full object-cover" />
+            </div>
+          ))}
+        </div>
+        <div className="marquee-track-reverse mt-4 flex w-max gap-4">
+          {[csrFood, csrWalk, csrCert, yardStack, teamLineup, teamCrane, csrFood, csrWalk, csrCert, yardStack].map((it, i) => (
+            <div key={i} className="relative h-44 w-64 shrink-0 overflow-hidden rounded-sm md:h-56 md:w-80">
+              <img src={it.url} alt="" loading="lazy" className="h-full w-full object-cover" />
+            </div>
+          ))}
+        </div>
+      </section>
 
+      {/* COMMUNITY TEASER */}
+      <section className="mx-auto max-w-[1400px] px-5 py-24 md:px-10 md:py-32">
+        <div className="grid gap-14 md:grid-cols-[1.1fr_1fr] md:items-center">
+          <div className="grid grid-cols-6 grid-rows-6 gap-3 h-[420px] md:h-[560px]">
+            <div className="col-span-4 row-span-4 overflow-hidden rounded-sm">
+              <img src={csrWalk.url} alt="Community walk" className="h-full w-full object-cover ken-burns" loading="lazy" />
+            </div>
+            <div className="col-span-2 row-span-3 overflow-hidden rounded-sm">
+              <img src={csrFood.url} alt="Food drive" className="h-full w-full object-cover" loading="lazy" />
+            </div>
+            <div className="col-span-2 row-span-3 overflow-hidden rounded-sm">
+              <img src={csrCert.url} alt="Certificate" className="h-full w-full object-cover" loading="lazy" />
+            </div>
+            <div className="col-span-4 row-span-2 overflow-hidden rounded-sm bg-ink p-5 text-cream flex items-end">
+              <p className="font-display text-xl font-black leading-tight md:text-2xl">
+                <span className="text-amber">2,000+</span> community members reached in 2026.
+              </p>
+            </div>
+          </div>
+          <div>
+            <p className="eyebrow text-ink-soft">/ Community & impact</p>
+            <h2 className="display-xl mt-4">Rooted in<br /><span className="text-amber">Tanzania.</span></h2>
+            <p className="mt-6 max-w-lg text-base leading-relaxed text-ink-soft">
+              We give back to the neighbourhoods that host our yards — through meals, wellness runs,
+              youth training and cleaner logistics. It's not sponsorship, it's family.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Link to="/community" className="inline-flex items-center gap-2 rounded-sm bg-ink px-6 py-3.5 text-sm font-semibold text-cream hover:-translate-y-0.5 transition-transform">
+                Our community work <span aria-hidden>→</span>
+              </Link>
+              <Link to="/gallery" className="inline-flex items-center gap-2 rounded-sm border border-border px-6 py-3.5 text-sm font-semibold text-ink hover:border-ink transition-colors">
+                Full gallery
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* TESTIMONIALS CAROUSEL */}
+      <section className="bg-ink text-cream">
+        <div className="mx-auto max-w-[1400px] px-5 py-24 md:px-10 md:py-32">
+          <p className="eyebrow text-amber">/ Clients</p>
+          <h2 className="display-xl mt-4 max-w-4xl">What they<br /><span className="text-amber">say.</span></h2>
+          <div className="mt-14 grid gap-10 md:grid-cols-[2fr_1fr] md:items-end">
+            <div className="relative min-h-[220px]">
+              {testimonials.map((t, i) => (
+                <blockquote
+                  key={i}
+                  className={`absolute inset-0 transition-all duration-700 ${i === tIdx ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4 pointer-events-none"}`}
+                >
+                  <p className="font-display text-2xl font-black leading-tight md:text-4xl">
+                    <span className="text-amber">"</span>{t.q}<span className="text-amber">"</span>
+                  </p>
+                  <footer className="mt-6 text-sm text-cream/70">
+                    <span className="font-semibold text-cream">{t.n}</span> · {t.r}
+                  </footer>
+                </blockquote>
+              ))}
+            </div>
+            <div className="flex items-center gap-3 md:justify-end">
+              {testimonials.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setTIdx(i)}
+                  aria-label={`Testimonial ${i + 1}`}
+                  className={`h-2 rounded-full transition-all ${i === tIdx ? "w-10 bg-amber" : "w-3 bg-cream/30 hover:bg-cream/60"}`}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* VALUES */}
       <section className="mx-auto max-w-[1400px] px-5 py-24 md:px-10 md:py-32">
@@ -274,12 +433,35 @@ function Home() {
             { k: "Accountability", v: "Clear ownership at every node. Track, trace and prove — from port to recipient." },
             { k: "Partnership", v: "We grow when our clients grow. Long-term relationships over transactional wins." },
           ].map((v, i) => (
-            <div key={v.k} className="flex flex-col gap-3 bg-background p-8">
+            <div key={v.k} className="flex flex-col gap-3 bg-background p-8 tilt-hover">
               <span className="font-mono text-xs text-amber">0{i + 1}</span>
               <h3 className="font-display text-2xl font-black">{v.k}</h3>
               <p className="text-sm text-ink-soft">{v.v}</p>
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* FINAL CTA */}
+      <section className="mx-auto max-w-[1400px] px-5 pb-24 md:px-10">
+        <div className="relative overflow-hidden rounded-sm bg-amber p-10 text-ink md:p-16">
+          <div className="pointer-events-none absolute -right-16 -top-16 h-64 w-64 rounded-full border-4 border-ink/10 spin-slow" />
+          <div className="relative grid items-end gap-10 md:grid-cols-[2fr_1fr]">
+            <div>
+              <p className="eyebrow">/ Ready when you are</p>
+              <h2 className="mt-4 font-display text-4xl font-black leading-none md:text-6xl">
+                Let's move your<br />next container.
+              </h2>
+            </div>
+            <div className="flex flex-wrap gap-3 md:justify-end">
+              <Link to="/contact" className="inline-flex items-center gap-2 rounded-sm bg-ink px-6 py-3.5 text-sm font-semibold text-cream hover:-translate-y-0.5 transition-transform">
+                Request a quote <span aria-hidden>→</span>
+              </Link>
+              <Link to="/services" className="inline-flex items-center gap-2 rounded-sm border border-ink/30 px-6 py-3.5 text-sm font-semibold text-ink hover:bg-ink/10 transition-colors">
+                See services
+              </Link>
+            </div>
+          </div>
         </div>
       </section>
     </>
