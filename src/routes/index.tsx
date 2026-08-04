@@ -378,6 +378,63 @@ function Home() {
         </div>
       </section>
 
+      {/* LEADERSHIP */}
+      <section className="relative isolate overflow-hidden bg-ink text-cream fx-grain">
+        <Aurora className="opacity-40" />
+        <div className="relative mx-auto max-w-[1400px] px-5 py-24 md:px-10 md:py-32">
+          <div className="grid gap-8 md:grid-cols-[auto_1fr] md:items-end">
+            <Reveal>
+              <p className="eyebrow text-amber">/ Leadership</p>
+              <h2 className="display-xl mt-4">Meet the people<br /><span className="text-amber">in charge.</span></h2>
+            </Reveal>
+            <Reveal delay={140} from="right" className="md:justify-self-end">
+              <p className="max-w-md text-base text-cream/75 md:text-right">
+                Decades of combined port, corridor and customs experience — accountable,
+                reachable and on the ground with every shipment.
+              </p>
+            </Reveal>
+          </div>
+
+          <div className="mt-16 grid gap-6 md:grid-cols-3">
+            {leaders.map((l, i) => (
+              <Reveal key={l.name} delay={i * 130} from="blur">
+                <Tilt intensity={6}>
+                  <article className="group fx-lift relative overflow-hidden rounded-sm border border-cream/12 bg-cream/[0.04] backdrop-blur-md">
+                    <div className="relative aspect-[3/4] overflow-hidden">
+                      <img
+                        src={l.img}
+                        alt={l.name}
+                        width={912}
+                        height={1200}
+                        loading="lazy"
+                        className="h-full w-full object-cover grayscale transition-all duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105 group-hover:grayscale-0"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/25 to-transparent" />
+                      <div className="absolute inset-x-0 bottom-0 translate-y-2 p-6 transition-transform duration-700 group-hover:translate-y-0">
+                        <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-amber">{l.role}</p>
+                        <h3 className="mt-2 font-display text-2xl font-black leading-none">{l.name}</h3>
+                        <p className="mt-3 max-h-0 overflow-hidden text-sm leading-relaxed text-cream/75 opacity-0 transition-all duration-700 group-hover:max-h-32 group-hover:opacity-100">
+                          {l.bio}
+                        </p>
+                      </div>
+                    </div>
+                  </article>
+                </Tilt>
+              </Reveal>
+            ))}
+          </div>
+
+          <Reveal delay={200} className="mt-12">
+            <Magnetic strength={0.2}>
+              <Link to="/team" className="fx-shine inline-flex items-center gap-2 rounded-sm bg-amber px-6 py-3.5 text-sm font-semibold text-ink transition-transform duration-500 hover:-translate-y-0.5">
+                Meet the full team <span aria-hidden>→</span>
+              </Link>
+            </Magnetic>
+          </Reveal>
+        </div>
+      </section>
+
+
       {/* COMMUNITY TEASER */}
       <section className="mx-auto max-w-[1400px] px-5 py-24 md:px-10 md:py-32">
         <div className="grid gap-14 md:grid-cols-[1.1fr_1fr] md:items-center">
