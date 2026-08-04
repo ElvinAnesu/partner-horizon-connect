@@ -16,15 +16,15 @@ const nav = [
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
   return (
-    <header className="sticky top-0 z-50 border-b border-border/60 bg-background/85 backdrop-blur-md">
+    <header className="sticky top-0 z-50 border-b border-border/60 bg-background/70 backdrop-blur-xl supports-[backdrop-filter]:bg-background/60">
       <div className="mx-auto grid max-w-[1400px] grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-5 py-4 md:px-10">
-        <Link to="/" className="flex min-w-0 items-center gap-3">
+        <Link to="/" className="group flex min-w-0 items-center gap-3">
           <img
             src={logoAsset.url}
             alt="Hesu Investment Ltd"
             width={200}
             height={60}
-            className="h-10 w-auto object-contain"
+            className="h-10 w-auto object-contain transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.04]"
           />
         </Link>
 
@@ -33,20 +33,24 @@ export function SiteHeader() {
             <Link
               key={n.to}
               to={n.to}
-              className="rounded-sm px-4 py-2 text-sm font-medium text-ink-soft transition-colors hover:text-ink"
-              activeProps={{ className: "rounded-sm px-4 py-2 text-sm font-semibold text-ink" }}
+              className="group relative rounded-sm px-4 py-2 text-sm font-medium text-ink-soft transition-colors duration-300 hover:text-ink"
+              activeProps={{ className: "relative rounded-sm px-4 py-2 text-sm font-semibold text-ink" }}
             >
               {n.label}
+              <span className="pointer-events-none absolute bottom-1 left-4 right-4 h-px origin-left scale-x-0 bg-amber transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-x-100" />
             </Link>
           ))}
-          <Link
-            to="/contact"
-            className="ml-3 inline-flex items-center gap-2 rounded-sm bg-ink px-5 py-2.5 text-sm font-semibold text-cream transition-transform hover:-translate-y-0.5"
-          >
-            Get a quote
-            <span aria-hidden>→</span>
-          </Link>
+          <Magnetic strength={0.18} className="ml-3">
+            <Link
+              to="/contact"
+              className="fx-shine inline-flex items-center gap-2 rounded-sm bg-ink px-5 py-2.5 text-sm font-semibold text-cream transition-all duration-500 hover:-translate-y-0.5 hover:shadow-[0_16px_30px_-16px_color-mix(in_oklab,var(--ink)_80%,transparent)]"
+            >
+              Get a quote
+              <span aria-hidden>→</span>
+            </Link>
+          </Magnetic>
         </nav>
+
         <button
           onClick={() => setOpen((v) => !v)}
           className="md:hidden rounded-sm border border-border p-2 text-ink"
