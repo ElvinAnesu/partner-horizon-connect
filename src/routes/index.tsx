@@ -84,6 +84,12 @@ const testimonials = [
   { q: "The security discipline alone is worth it. Zero pilferage across two years of shipments.", n: "Ravi S.", r: "Operations Director, industrial equipment" },
   { q: "Real people, real trucks, real accountability. Not a broker — an operator.", n: "Grace L.", r: "Logistics Manager, retail chain" },
 ];
+const leaders = [
+  { name: "Abdallah H. Mnyandu", role: "Managing Director", img: leaderMd, bio: "Founder and strategic lead, driving Hesu's growth across Tanzania and the wider EAC corridor." },
+  { name: "Fatma S. Omar", role: "Operations Director", img: leaderCeo, bio: "Oversees terminal, yard and fleet operations with a focus on safety, throughput and on-time delivery." },
+  { name: "Michael P. Rugakingira", role: "Commercial Manager", img: leaderBh, bio: "Leads client partnerships, business development and pricing across ICD, CFS and distribution." },
+];
+
 
 function Home() {
   const [slide, setSlide] = useState(0);
