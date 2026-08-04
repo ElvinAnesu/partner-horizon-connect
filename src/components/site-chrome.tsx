@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
 import logoAsset from "@/assets/HESU-Logo_1.png.asset.json";
+import { Magnetic } from "@/components/fx";
 
 
 const nav = [
