@@ -94,62 +94,76 @@ function Avatar({ initials }: { initials: string }) {
 function Team() {
   return (
     <>
-      <section className="bg-ink text-cream">
-        <div className="mx-auto max-w-[1400px] px-5 pb-20 pt-20 md:px-10 md:pb-28 md:pt-28">
-          <p className="eyebrow text-amber">/ Our people</p>
-          <h1 className="display-xl mt-6 max-w-5xl text-cream">
-            The team behind<br />
-            every <span className="text-amber">container.</span>
-          </h1>
+      <section className="relative isolate overflow-hidden bg-ink text-cream fx-grain">
+        <Aurora className="opacity-50" />
+        <div className="relative mx-auto max-w-[1400px] px-5 pb-20 pt-20 md:px-10 md:pb-28 md:pt-28">
+          <Reveal>
+            <p className="eyebrow text-amber">/ Our people</p>
+            <h1 className="display-xl mt-6 max-w-5xl text-cream">
+              The team behind<br />
+              every <span className="text-amber">container.</span>
+            </h1>
+          </Reveal>
         </div>
       </section>
 
       <section className="mx-auto max-w-[1400px] px-5 py-24 md:px-10">
         <div className="grid gap-16 md:grid-cols-[1fr_1.4fr]">
-          <div>
+          <Reveal>
             <p className="eyebrow text-ink-soft">/ Leadership</p>
             <h2 className="mt-4 font-display text-3xl font-black md:text-4xl">
               Built by operators,<br />guided by experience.
             </h2>
-          </div>
-          <p className="text-base leading-relaxed text-ink-soft md:text-lg">
-            Hesu’s strength is its people. Our leadership team combines deep logistics experience,
-            local market knowledge and a shared commitment to delivering for every client — every day.
-          </p>
+          </Reveal>
+          <Reveal delay={140} from="right">
+            <p className="text-base leading-relaxed text-ink-soft md:text-lg">
+              Hesu’s strength is its people. Our leadership team combines deep logistics experience,
+              local market knowledge and a shared commitment to delivering for every client — every day.
+            </p>
+          </Reveal>
         </div>
 
         <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-          {executives.map((p) => (
-            <div key={p.name} className="flex flex-col gap-5 rounded-sm border border-border bg-card p-6">
-              <Avatar initials={p.initials} />
-              <div>
-                <h3 className="font-display text-xl font-black">{p.name}</h3>
-                <p className="mt-1 text-sm font-semibold text-amber">{p.role}</p>
-              </div>
-              <p className="text-sm leading-relaxed text-ink-soft">{p.bio}</p>
-            </div>
+          {executives.map((p, i) => (
+            <Reveal key={p.name} delay={i * 110} from="blur">
+              <Tilt intensity={6}>
+                <div className="group fx-lift flex h-full flex-col gap-5 rounded-sm border border-border bg-card p-6 hover:border-amber">
+                  <Avatar initials={p.initials} />
+                  <div>
+                    <h3 className="font-display text-xl font-black">{p.name}</h3>
+                    <p className="mt-1 text-sm font-semibold text-amber">{p.role}</p>
+                  </div>
+                  <p className="text-sm leading-relaxed text-ink-soft">{p.bio}</p>
+                </div>
+              </Tilt>
+            </Reveal>
           ))}
         </div>
       </section>
 
       <section className="border-y border-border bg-secondary">
         <div className="mx-auto max-w-[1400px] px-5 py-24 md:px-10">
-          <p className="eyebrow text-ink-soft">/ Operations team</p>
-          <h2 className="mt-4 max-w-3xl font-display text-3xl font-black md:text-4xl">
-            The specialists who keep cargo flowing.
-          </h2>
+          <Reveal>
+            <p className="eyebrow text-ink-soft">/ Operations team</p>
+            <h2 className="mt-4 max-w-3xl font-display text-3xl font-black md:text-4xl">
+              The specialists who keep cargo flowing.
+            </h2>
+          </Reveal>
           <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {managers.map((p) => (
-              <div key={p.name} className="flex items-center gap-4 rounded-sm border border-border bg-background p-5">
-                <Avatar initials={p.initials} />
-                <div>
-                  <h3 className="font-display text-lg font-black">{p.name}</h3>
-                  <p className="text-sm text-ink-soft">{p.role}</p>
+            {managers.map((p, i) => (
+              <Reveal key={p.name} delay={i * 90}>
+                <div className="group fx-lift flex items-center gap-4 rounded-sm border border-border bg-background p-5 hover:border-amber">
+                  <Avatar initials={p.initials} />
+                  <div>
+                    <h3 className="font-display text-lg font-black">{p.name}</h3>
+                    <p className="text-sm text-ink-soft">{p.role}</p>
+                  </div>
                 </div>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
+
       </section>
 
       <section className="mx-auto max-w-[1400px] px-5 py-24 md:px-10">
