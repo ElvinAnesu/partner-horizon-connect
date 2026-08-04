@@ -83,11 +83,13 @@ const values = [
 
 function Avatar({ initials }: { initials: string }) {
   return (
-    <div className="flex h-20 w-20 items-center justify-center rounded-full bg-ink text-cream font-display text-2xl font-black tracking-tight md:h-24 md:w-24 md:text-3xl">
+    <div className="relative flex h-20 w-20 shrink-0 items-center justify-center rounded-full bg-ink text-cream font-display text-2xl font-black tracking-tight transition-all duration-700 group-hover:shadow-[0_0_0_6px_color-mix(in_oklab,var(--amber)_22%,transparent)] md:h-24 md:w-24 md:text-3xl">
+      <span className="pointer-events-none absolute inset-0 rounded-full border border-amber/40 opacity-0 transition-all duration-700 group-hover:scale-110 group-hover:opacity-100" />
       {initials}
     </div>
   );
 }
+
 
 function Team() {
   return (
