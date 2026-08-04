@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import aboutCta from "@/assets/about-cta.jpg";
+import { Reveal, Tilt, Aurora, Magnetic } from "@/components/fx";
 
 export const Route = createFileRoute("/team")({
   head: () => ({
