@@ -168,31 +168,41 @@ function Team() {
       </section>
 
       <section className="mx-auto max-w-[1400px] px-5 py-24 md:px-10">
-        <p className="eyebrow text-ink-soft">/ Why our team matters</p>
-        <h2 className="display-xl mt-4 max-w-4xl">People first.<br />Cargo <span className="text-amber">always.</span></h2>
+        <Reveal>
+          <p className="eyebrow text-ink-soft">/ Why our team matters</p>
+          <h2 className="display-xl mt-4 max-w-4xl">People first.<br />Cargo <span className="text-amber">always.</span></h2>
+        </Reveal>
         <div className="mt-16 grid gap-px overflow-hidden rounded-sm bg-border md:grid-cols-4">
           {values.map((v, i) => (
-            <div key={v.k} className="flex flex-col gap-3 bg-background p-8">
-              <span className="font-mono text-xs text-amber">0{i + 1}</span>
-              <h3 className="font-display text-2xl font-black">{v.k}</h3>
-              <p className="text-sm text-ink-soft">{v.v}</p>
-            </div>
+            <Reveal key={v.k} delay={i * 100} from="scale">
+              <div className="group flex h-full flex-col gap-3 bg-background p-8 transition-colors duration-500 hover:bg-secondary">
+                <span className="font-mono text-xs text-amber">0{i + 1}</span>
+                <h3 className="font-display text-2xl font-black">{v.k}</h3>
+                <p className="text-sm text-ink-soft">{v.v}</p>
+              </div>
+            </Reveal>
           ))}
         </div>
       </section>
 
       <section className="mx-auto max-w-[1400px] px-5 pb-24 md:px-10">
-        <div className="rounded-sm bg-ink p-10 text-cream md:p-16">
-          <div className="grid items-end gap-10 md:grid-cols-[2fr_1fr]">
-            <h2 className="font-display text-4xl font-black leading-none md:text-6xl">
-              Join the team<br /><span className="text-amber">shaping trade.</span>
-            </h2>
-            <Link to="/contact" className="inline-flex w-fit items-center gap-2 rounded-sm bg-amber px-6 py-3.5 text-sm font-semibold text-ink hover:-translate-y-0.5 transition-transform">
-              Careers & enquiries <span aria-hidden>→</span>
-            </Link>
+        <Reveal from="scale">
+          <div className="relative overflow-hidden rounded-sm bg-ink p-10 text-cream md:p-16 fx-grain">
+            <Aurora className="opacity-30" />
+            <div className="relative grid items-end gap-10 md:grid-cols-[2fr_1fr]">
+              <h2 className="font-display text-4xl font-black leading-none md:text-6xl">
+                Join the team<br /><span className="text-amber">shaping trade.</span>
+              </h2>
+              <Magnetic strength={0.2}>
+                <Link to="/contact" className="fx-shine inline-flex w-fit items-center gap-2 rounded-sm bg-amber px-6 py-3.5 text-sm font-semibold text-ink hover:-translate-y-0.5 transition-transform duration-500">
+                  Careers & enquiries <span aria-hidden>→</span>
+                </Link>
+              </Magnetic>
+            </div>
           </div>
-        </div>
+        </Reveal>
       </section>
+
     </>
   );
 }
