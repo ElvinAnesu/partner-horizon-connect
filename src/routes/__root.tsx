@@ -12,6 +12,7 @@ import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { SiteHeader, SiteFooter } from "../components/site-chrome";
+import { ScrollProgress, CursorGlow } from "../components/fx";
 
 
 function NotFoundComponent() {
@@ -123,6 +124,8 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
+      <ScrollProgress />
+      <CursorGlow />
       <SiteHeader />
       <main>
         <Outlet />
