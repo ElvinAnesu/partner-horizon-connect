@@ -99,7 +99,7 @@ function Home() {
   return (
     <>
       {/* HERO */}
-      <section className="relative isolate overflow-hidden bg-ink text-cream">
+      <section className="relative isolate overflow-hidden bg-ink text-cream fx-grain">
         <div className="absolute inset-0 -z-10">
           {heroSlides.map((s, i) => (
             <img
@@ -108,12 +108,15 @@ function Home() {
               alt={s.alt}
               width={1920}
               height={1280}
-              className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-1000 ease-in-out ${i === slide ? "opacity-55 ken-burns" : "opacity-0"}`}
+              className={`absolute inset-0 h-full w-full object-cover transition-all duration-[1400ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${i === slide ? "scale-100 opacity-55 ken-burns blur-0" : "scale-105 opacity-0 blur-sm"}`}
             />
           ))}
         </div>
         <div className="absolute inset-0 -z-10 bg-gradient-to-br from-ink via-ink/70 to-transparent" />
+        <Aurora className="-z-10 opacity-70" />
+        <Particles className="-z-10" />
         <div className="pointer-events-none absolute -right-16 top-16 hidden h-72 w-72 rounded-full border border-amber/30 md:block spin-slow" />
+        <div className="pointer-events-none absolute -right-4 top-28 hidden h-48 w-48 rounded-full border border-cream/10 md:block spin-slow" style={{ animationDirection: "reverse" }} />
         <div className="pointer-events-none absolute bottom-8 left-8 hidden h-3 w-3 rounded-full bg-amber md:block float-slow" />
         <div className="absolute bottom-5 right-5 z-10 flex gap-2 md:bottom-8 md:right-10">
           {heroSlides.map((_, i) => (
@@ -121,7 +124,7 @@ function Home() {
               key={i}
               onClick={() => setSlide(i)}
               aria-label={`Go to slide ${i + 1}`}
-              className={`h-1.5 rounded-full transition-all ${i === slide ? "w-8 bg-amber" : "w-4 bg-cream/40 hover:bg-cream/70"}`}
+              className={`h-1.5 rounded-full transition-all duration-500 ${i === slide ? "w-8 bg-amber shadow-[0_0_14px_2px_color-mix(in_oklab,var(--amber)_60%,transparent)]" : "w-4 bg-cream/40 hover:bg-cream/70"}`}
             />
           ))}
         </div>
@@ -135,31 +138,39 @@ function Home() {
               at a time.
             </h1>
             <div className="mt-10 flex flex-wrap gap-3 reveal-up" style={{ animationDelay: "0.25s" }}>
-              <Link to="/services" className="inline-flex items-center gap-2 rounded-sm bg-amber px-6 py-3.5 text-sm font-semibold text-ink transition-transform hover:-translate-y-0.5">
-                Our services <span aria-hidden>→</span>
-              </Link>
-              <Link to="/contact" className="inline-flex items-center gap-2 rounded-sm border border-cream/30 px-6 py-3.5 text-sm font-semibold text-cream transition-colors hover:bg-cream/10">
-                Request a quote
-              </Link>
+              <Magnetic strength={0.2}>
+                <Link to="/services" className="fx-shine inline-flex items-center gap-2 rounded-sm bg-amber px-6 py-3.5 text-sm font-semibold text-ink transition-all duration-500 hover:-translate-y-0.5 hover:shadow-[0_18px_40px_-16px_color-mix(in_oklab,var(--amber)_75%,transparent)]">
+                  Our services <span aria-hidden className="transition-transform duration-500 group-hover:translate-x-1">→</span>
+                </Link>
+              </Magnetic>
+              <Magnetic strength={0.2}>
+                <Link to="/contact" className="fx-shine inline-flex items-center gap-2 rounded-sm border border-cream/30 px-6 py-3.5 text-sm font-semibold text-cream transition-colors duration-500 hover:border-amber/60 hover:bg-cream/10">
+                  Request a quote
+                </Link>
+              </Magnetic>
             </div>
           </div>
-          <div className="self-end reveal-up" style={{ animationDelay: "0.35s" }}>
+          <Parallax distance={34} className="self-end reveal-up" >
             <p className="max-w-sm text-base leading-relaxed text-cream/85 md:text-lg">
               We don't just store goods or move cargo — we create value at every touchpoint
               through integrated supply chain, strategic partnerships and intelligent
               resource allocation.
             </p>
             <div className="mt-8 grid grid-cols-2 gap-6 border-t border-cream/15 pt-6">
-              {stats.map((s) => (
-                <div key={s.v}>
-                  <div className="font-display text-3xl font-black text-amber">{s.k}</div>
+              {stats.map((s, i) => (
+                <Reveal key={s.v} delay={i * 110} from="blur">
+                  <div className="font-display text-3xl font-black text-amber">
+                    <Counter value={s.k} />
+                  </div>
                   <div className="mt-1 text-xs text-cream/70">{s.v}</div>
-                </div>
+                </Reveal>
               ))}
             </div>
-          </div>
+          </Parallax>
         </div>
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-background/0 to-transparent" />
       </section>
+
 
       {/* MARQUEE partners (two-row opposite directions) */}
       <section className="border-y border-border bg-background py-6 overflow-hidden">
