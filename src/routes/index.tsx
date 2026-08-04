@@ -530,8 +530,10 @@ function Home() {
 
       {/* VALUES */}
       <section className="mx-auto max-w-[1400px] px-5 py-24 md:px-10 md:py-32">
-        <p className="eyebrow text-ink-soft">/ Core values</p>
-        <h2 className="display-xl mt-4 max-w-4xl">Built on trust.<br />Measured by <span className="text-amber">results.</span></h2>
+        <Reveal>
+          <p className="eyebrow text-ink-soft">/ Core values</p>
+          <h2 className="display-xl mt-4 max-w-4xl">Built on trust.<br />Measured by <span className="text-amber">results.</span></h2>
+        </Reveal>
         <div className="mt-16 grid gap-px overflow-hidden rounded-sm bg-border md:grid-cols-4">
           {[
             { k: "Integrity", v: "Transparent dealings with clients, partners and authorities — every transaction, every time." },
@@ -539,37 +541,47 @@ function Home() {
             { k: "Accountability", v: "Clear ownership at every node. Track, trace and prove — from port to recipient." },
             { k: "Partnership", v: "We grow when our clients grow. Long-term relationships over transactional wins." },
           ].map((v, i) => (
-            <div key={v.k} className="flex flex-col gap-3 bg-background p-8 tilt-hover">
-              <span className="font-mono text-xs text-amber">0{i + 1}</span>
-              <h3 className="font-display text-2xl font-black">{v.k}</h3>
-              <p className="text-sm text-ink-soft">{v.v}</p>
-            </div>
+            <Reveal key={v.k} delay={i * 100} from="scale">
+              <div className="group flex h-full flex-col gap-3 bg-background p-8 transition-colors duration-500 hover:bg-secondary">
+                <span className="font-mono text-xs text-amber">0{i + 1}</span>
+                <h3 className="font-display text-2xl font-black transition-transform duration-500 group-hover:-translate-y-0.5">{v.k}</h3>
+                <p className="text-sm text-ink-soft">{v.v}</p>
+              </div>
+            </Reveal>
           ))}
         </div>
       </section>
 
       {/* FINAL CTA */}
       <section className="mx-auto max-w-[1400px] px-5 pb-24 md:px-10">
-        <div className="relative overflow-hidden rounded-sm bg-amber p-10 text-ink md:p-16">
-          <div className="pointer-events-none absolute -right-16 -top-16 h-64 w-64 rounded-full border-4 border-ink/10 spin-slow" />
-          <div className="relative grid items-end gap-10 md:grid-cols-[2fr_1fr]">
-            <div>
-              <p className="eyebrow">/ Ready when you are</p>
-              <h2 className="mt-4 font-display text-4xl font-black leading-none md:text-6xl">
-                Let's move your<br />next container.
-              </h2>
-            </div>
-            <div className="flex flex-wrap gap-3 md:justify-end">
-              <Link to="/contact" className="inline-flex items-center gap-2 rounded-sm bg-ink px-6 py-3.5 text-sm font-semibold text-cream hover:-translate-y-0.5 transition-transform">
-                Request a quote <span aria-hidden>→</span>
-              </Link>
-              <Link to="/services" className="inline-flex items-center gap-2 rounded-sm border border-ink/30 px-6 py-3.5 text-sm font-semibold text-ink hover:bg-ink/10 transition-colors">
-                See services
-              </Link>
+        <Reveal from="scale">
+          <div className="relative overflow-hidden rounded-sm bg-amber p-10 text-ink md:p-16">
+            <div className="pointer-events-none absolute -right-16 -top-16 h-64 w-64 rounded-full border-4 border-ink/10 spin-slow" />
+            <div className="pointer-events-none absolute -left-10 -bottom-16 h-48 w-48 rounded-full border-2 border-ink/10 spin-slow" style={{ animationDirection: "reverse" }} />
+            <div className="relative grid items-end gap-10 md:grid-cols-[2fr_1fr]">
+              <div>
+                <p className="eyebrow">/ Ready when you are</p>
+                <h2 className="mt-4 font-display text-4xl font-black leading-none md:text-6xl">
+                  Let's move your<br />next container.
+                </h2>
+              </div>
+              <div className="flex flex-wrap gap-3 md:justify-end">
+                <Magnetic strength={0.2}>
+                  <Link to="/contact" className="fx-shine inline-flex items-center gap-2 rounded-sm bg-ink px-6 py-3.5 text-sm font-semibold text-cream hover:-translate-y-0.5 transition-transform duration-500">
+                    Request a quote <span aria-hidden>→</span>
+                  </Link>
+                </Magnetic>
+                <Magnetic strength={0.2}>
+                  <Link to="/services" className="fx-shine inline-flex items-center gap-2 rounded-sm border border-ink/30 px-6 py-3.5 text-sm font-semibold text-ink hover:bg-ink/10 transition-colors duration-500">
+                    See services
+                  </Link>
+                </Magnetic>
+              </div>
             </div>
           </div>
-        </div>
+        </Reveal>
       </section>
+
     </>
   );
 }
