@@ -186,46 +186,52 @@ function Home() {
       {/* WHAT WE DO */}
       <section id="services" className="mx-auto max-w-[1400px] px-5 py-24 md:px-10 md:py-32">
         <div className="grid gap-8 md:grid-cols-[auto_1fr] md:items-end">
-          <div>
+          <Reveal>
             <p className="eyebrow text-ink-soft">/ What we do</p>
             <h2 className="display-xl mt-4 max-w-3xl text-ink">
               End-to-end<br />supply chain<br /><span className="text-amber">infrastructure.</span>
             </h2>
-          </div>
-          <p className="max-w-md text-base text-ink-soft md:justify-self-end md:text-right">
-            From port to door — handling, storage, clearance and distribution under one roof.
-            Built for speed, costed for scale.
-          </p>
+          </Reveal>
+          <Reveal delay={140} from="right" className="md:justify-self-end">
+            <p className="max-w-md text-base text-ink-soft md:text-right">
+              From port to door — handling, storage, clearance and distribution under one roof.
+              Built for speed, costed for scale.
+            </p>
+          </Reveal>
         </div>
 
         <div className="mt-16 grid gap-6 md:grid-cols-3">
-          {services.map((s) => (
-            <Link
-              key={s.num}
-              to={s.href}
-              className="group relative flex flex-col overflow-hidden rounded-sm border border-border bg-card transition-all hover:-translate-y-1 hover:border-amber tilt-hover"
-            >
-              <div className="aspect-[4/3] overflow-hidden">
-                <img
-                  src={s.img}
-                  alt={s.title}
-                  width={1280}
-                  height={960}
-                  loading="lazy"
-                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-              </div>
-              <div className="flex flex-1 flex-col gap-4 p-6">
-                <div className="flex items-center justify-between">
-                  <span className="font-mono text-xs text-ink-soft">{s.num} / {s.short}</span>
-                  <span className="text-amber transition-transform group-hover:translate-x-1">→</span>
-                </div>
-                <h3 className="font-display text-2xl font-black leading-none">{s.title}</h3>
-                <p className="text-sm leading-relaxed text-ink-soft">{s.desc}</p>
-              </div>
-            </Link>
+          {services.map((s, i) => (
+            <Reveal key={s.num} delay={i * 120} from="blur">
+              <Tilt>
+                <Link
+                  to={s.href}
+                  className="group fx-lift relative flex h-full flex-col overflow-hidden rounded-sm border border-border bg-card hover:border-amber"
+                >
+                  <div className="aspect-[4/3] overflow-hidden">
+                    <img
+                      src={s.img}
+                      alt={s.title}
+                      width={1280}
+                      height={960}
+                      loading="lazy"
+                      className="h-full w-full object-cover transition-transform duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-110"
+                    />
+                  </div>
+                  <div className="flex flex-1 flex-col gap-4 p-6">
+                    <div className="flex items-center justify-between">
+                      <span className="font-mono text-xs text-ink-soft">{s.num} / {s.short}</span>
+                      <span className="text-amber transition-transform duration-500 group-hover:translate-x-1.5">→</span>
+                    </div>
+                    <h3 className="font-display text-2xl font-black leading-none">{s.title}</h3>
+                    <p className="text-sm leading-relaxed text-ink-soft">{s.desc}</p>
+                  </div>
+                </Link>
+              </Tilt>
+            </Reveal>
           ))}
         </div>
+
       </section>
 
       {/* HOW WE WORK — process timeline */}
