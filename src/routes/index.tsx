@@ -1,10 +1,22 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
+import {
+  Reveal,
+  Tilt,
+  Magnetic,
+  Counter,
+  Aurora,
+  Particles,
+  Parallax,
+} from "@/components/fx";
 import heroPort from "@/assets/hero-port.jpg";
 import serviceIcd from "@/assets/service-icd.jpg";
 import serviceCfs from "@/assets/service-cfs.jpg";
 import serviceDistribution from "@/assets/service-distribution.jpg";
 import aboutCta from "@/assets/about-cta.jpg";
+import leaderMd from "@/assets/leader-md.jpg";
+import leaderCeo from "@/assets/leader-ceo.jpg";
+import leaderBh from "@/assets/leader-bh.jpg";
 import teamInspection from "@/assets/hesu-team-inspection.jpg.asset.json";
 import teamDrill from "@/assets/hesu-team-drill.jpg.asset.json";
 import teamCrane from "@/assets/team-crane.jpg.asset.json";
@@ -72,6 +84,12 @@ const testimonials = [
   { q: "The security discipline alone is worth it. Zero pilferage across two years of shipments.", n: "Ravi S.", r: "Operations Director, industrial equipment" },
   { q: "Real people, real trucks, real accountability. Not a broker — an operator.", n: "Grace L.", r: "Logistics Manager, retail chain" },
 ];
+const leaders = [
+  { name: "Abdallah H. Mnyandu", role: "Managing Director", img: leaderMd, bio: "Founder and strategic lead, driving Hesu's growth across Tanzania and the wider EAC corridor." },
+  { name: "Fatma S. Omar", role: "Operations Director", img: leaderCeo, bio: "Oversees terminal, yard and fleet operations with a focus on safety, throughput and on-time delivery." },
+  { name: "Michael P. Rugakingira", role: "Commercial Manager", img: leaderBh, bio: "Leads client partnerships, business development and pricing across ICD, CFS and distribution." },
+];
+
 
 function Home() {
   const [slide, setSlide] = useState(0);
@@ -87,7 +105,7 @@ function Home() {
   return (
     <>
       {/* HERO */}
-      <section className="relative isolate overflow-hidden bg-ink text-cream">
+      <section className="relative isolate overflow-hidden bg-ink text-cream fx-grain">
         <div className="absolute inset-0 -z-10">
           {heroSlides.map((s, i) => (
             <img
@@ -96,12 +114,15 @@ function Home() {
               alt={s.alt}
               width={1920}
               height={1280}
-              className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-1000 ease-in-out ${i === slide ? "opacity-55 ken-burns" : "opacity-0"}`}
+              className={`absolute inset-0 h-full w-full object-cover transition-all duration-[1400ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${i === slide ? "scale-100 opacity-55 ken-burns blur-0" : "scale-105 opacity-0 blur-sm"}`}
             />
           ))}
         </div>
         <div className="absolute inset-0 -z-10 bg-gradient-to-br from-ink via-ink/70 to-transparent" />
+        <Aurora className="-z-10 opacity-70" />
+        <Particles className="-z-10" />
         <div className="pointer-events-none absolute -right-16 top-16 hidden h-72 w-72 rounded-full border border-amber/30 md:block spin-slow" />
+        <div className="pointer-events-none absolute -right-4 top-28 hidden h-48 w-48 rounded-full border border-cream/10 md:block spin-slow" style={{ animationDirection: "reverse" }} />
         <div className="pointer-events-none absolute bottom-8 left-8 hidden h-3 w-3 rounded-full bg-amber md:block float-slow" />
         <div className="absolute bottom-5 right-5 z-10 flex gap-2 md:bottom-8 md:right-10">
           {heroSlides.map((_, i) => (
@@ -109,7 +130,7 @@ function Home() {
               key={i}
               onClick={() => setSlide(i)}
               aria-label={`Go to slide ${i + 1}`}
-              className={`h-1.5 rounded-full transition-all ${i === slide ? "w-8 bg-amber" : "w-4 bg-cream/40 hover:bg-cream/70"}`}
+              className={`h-1.5 rounded-full transition-all duration-500 ${i === slide ? "w-8 bg-amber shadow-[0_0_14px_2px_color-mix(in_oklab,var(--amber)_60%,transparent)]" : "w-4 bg-cream/40 hover:bg-cream/70"}`}
             />
           ))}
         </div>
@@ -123,31 +144,39 @@ function Home() {
               at a time.
             </h1>
             <div className="mt-10 flex flex-wrap gap-3 reveal-up" style={{ animationDelay: "0.25s" }}>
-              <Link to="/services" className="inline-flex items-center gap-2 rounded-sm bg-amber px-6 py-3.5 text-sm font-semibold text-ink transition-transform hover:-translate-y-0.5">
-                Our services <span aria-hidden>→</span>
-              </Link>
-              <Link to="/contact" className="inline-flex items-center gap-2 rounded-sm border border-cream/30 px-6 py-3.5 text-sm font-semibold text-cream transition-colors hover:bg-cream/10">
-                Request a quote
-              </Link>
+              <Magnetic strength={0.2}>
+                <Link to="/services" className="fx-shine inline-flex items-center gap-2 rounded-sm bg-amber px-6 py-3.5 text-sm font-semibold text-ink transition-all duration-500 hover:-translate-y-0.5 hover:shadow-[0_18px_40px_-16px_color-mix(in_oklab,var(--amber)_75%,transparent)]">
+                  Our services <span aria-hidden className="transition-transform duration-500 group-hover:translate-x-1">→</span>
+                </Link>
+              </Magnetic>
+              <Magnetic strength={0.2}>
+                <Link to="/contact" className="fx-shine inline-flex items-center gap-2 rounded-sm border border-cream/30 px-6 py-3.5 text-sm font-semibold text-cream transition-colors duration-500 hover:border-amber/60 hover:bg-cream/10">
+                  Request a quote
+                </Link>
+              </Magnetic>
             </div>
           </div>
-          <div className="self-end reveal-up" style={{ animationDelay: "0.35s" }}>
+          <Parallax distance={34} className="self-end reveal-up" >
             <p className="max-w-sm text-base leading-relaxed text-cream/85 md:text-lg">
               We don't just store goods or move cargo — we create value at every touchpoint
               through integrated supply chain, strategic partnerships and intelligent
               resource allocation.
             </p>
             <div className="mt-8 grid grid-cols-2 gap-6 border-t border-cream/15 pt-6">
-              {stats.map((s) => (
-                <div key={s.v}>
-                  <div className="font-display text-3xl font-black text-amber">{s.k}</div>
+              {stats.map((s, i) => (
+                <Reveal key={s.v} delay={i * 110} from="blur">
+                  <div className="font-display text-3xl font-black text-amber">
+                    <Counter value={s.k} />
+                  </div>
                   <div className="mt-1 text-xs text-cream/70">{s.v}</div>
-                </div>
+                </Reveal>
               ))}
             </div>
-          </div>
+          </Parallax>
         </div>
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-background/0 to-transparent" />
       </section>
+
 
       {/* MARQUEE partners (two-row opposite directions) */}
       <section className="border-y border-border bg-background py-6 overflow-hidden">
@@ -163,46 +192,52 @@ function Home() {
       {/* WHAT WE DO */}
       <section id="services" className="mx-auto max-w-[1400px] px-5 py-24 md:px-10 md:py-32">
         <div className="grid gap-8 md:grid-cols-[auto_1fr] md:items-end">
-          <div>
+          <Reveal>
             <p className="eyebrow text-ink-soft">/ What we do</p>
             <h2 className="display-xl mt-4 max-w-3xl text-ink">
               End-to-end<br />supply chain<br /><span className="text-amber">infrastructure.</span>
             </h2>
-          </div>
-          <p className="max-w-md text-base text-ink-soft md:justify-self-end md:text-right">
-            From port to door — handling, storage, clearance and distribution under one roof.
-            Built for speed, costed for scale.
-          </p>
+          </Reveal>
+          <Reveal delay={140} from="right" className="md:justify-self-end">
+            <p className="max-w-md text-base text-ink-soft md:text-right">
+              From port to door — handling, storage, clearance and distribution under one roof.
+              Built for speed, costed for scale.
+            </p>
+          </Reveal>
         </div>
 
         <div className="mt-16 grid gap-6 md:grid-cols-3">
-          {services.map((s) => (
-            <Link
-              key={s.num}
-              to={s.href}
-              className="group relative flex flex-col overflow-hidden rounded-sm border border-border bg-card transition-all hover:-translate-y-1 hover:border-amber tilt-hover"
-            >
-              <div className="aspect-[4/3] overflow-hidden">
-                <img
-                  src={s.img}
-                  alt={s.title}
-                  width={1280}
-                  height={960}
-                  loading="lazy"
-                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-              </div>
-              <div className="flex flex-1 flex-col gap-4 p-6">
-                <div className="flex items-center justify-between">
-                  <span className="font-mono text-xs text-ink-soft">{s.num} / {s.short}</span>
-                  <span className="text-amber transition-transform group-hover:translate-x-1">→</span>
-                </div>
-                <h3 className="font-display text-2xl font-black leading-none">{s.title}</h3>
-                <p className="text-sm leading-relaxed text-ink-soft">{s.desc}</p>
-              </div>
-            </Link>
+          {services.map((s, i) => (
+            <Reveal key={s.num} delay={i * 120} from="blur">
+              <Tilt>
+                <Link
+                  to={s.href}
+                  className="group fx-lift relative flex h-full flex-col overflow-hidden rounded-sm border border-border bg-card hover:border-amber"
+                >
+                  <div className="aspect-[4/3] overflow-hidden">
+                    <img
+                      src={s.img}
+                      alt={s.title}
+                      width={1280}
+                      height={960}
+                      loading="lazy"
+                      className="h-full w-full object-cover transition-transform duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-110"
+                    />
+                  </div>
+                  <div className="flex flex-1 flex-col gap-4 p-6">
+                    <div className="flex items-center justify-between">
+                      <span className="font-mono text-xs text-ink-soft">{s.num} / {s.short}</span>
+                      <span className="text-amber transition-transform duration-500 group-hover:translate-x-1.5">→</span>
+                    </div>
+                    <h3 className="font-display text-2xl font-black leading-none">{s.title}</h3>
+                    <p className="text-sm leading-relaxed text-ink-soft">{s.desc}</p>
+                  </div>
+                </Link>
+              </Tilt>
+            </Reveal>
           ))}
         </div>
+
       </section>
 
       {/* HOW WE WORK — process timeline */}
@@ -273,52 +308,66 @@ function Home() {
       <section className="bg-background">
         <div className="mx-auto grid max-w-[1400px] gap-10 px-5 py-24 md:grid-cols-2 md:gap-16 md:px-10 md:py-32">
           <div className="flex flex-col justify-center">
-            <p className="eyebrow text-ink-soft">/ Cargo security</p>
-            <h2 className="display-xl mt-4">Your cargo,<br /><span className="text-amber">guarded</span> around the clock.</h2>
-            <p className="mt-6 max-w-lg text-base leading-relaxed text-ink-soft">
-              Every yard, warehouse and convoy is protected by our in-house trained
-              security force — recruited, drilled and deployed to Hesu standards. From
-              gate control to armed escort, we treat every container as if it were our own.
-            </p>
+            <Reveal>
+              <p className="eyebrow text-ink-soft">/ Cargo security</p>
+              <h2 className="display-xl mt-4">Your cargo,<br /><span className="text-amber">guarded</span> around the clock.</h2>
+              <p className="mt-6 max-w-lg text-base leading-relaxed text-ink-soft">
+                Every yard, warehouse and convoy is protected by our in-house trained
+                security force — recruited, drilled and deployed to Hesu standards. From
+                gate control to armed escort, we treat every container as if it were our own.
+              </p>
+            </Reveal>
             <div className="mt-8 grid grid-cols-2 gap-6 border-t border-border pt-6">
               {[
                 { k: "24/7", v: "Manned guarding & CCTV" },
                 { k: "100%", v: "Vetted, uniformed personnel" },
                 { k: "In-house", v: "Drill & discipline training" },
                 { k: "Zero", v: "Tolerance for pilferage" },
-              ].map((s) => (
-                <div key={s.v}>
-                  <div className="font-display text-2xl font-black text-ink">{s.k}</div>
+              ].map((s, i) => (
+                <Reveal key={s.v} delay={i * 100} from="blur">
+                  <div className="font-display text-2xl font-black text-ink">
+                    <Counter value={s.k} />
+                  </div>
                   <div className="mt-1 text-xs text-ink-soft">{s.v}</div>
-                </div>
+                </Reveal>
               ))}
             </div>
           </div>
-          <div className="grid grid-cols-2 gap-3">
-            <div className="relative col-span-2 aspect-[16/9] overflow-hidden rounded-sm">
-              <img
-                src={teamDrill.url}
-                alt="Hesu security team on drill formation"
-                loading="lazy"
-                className="h-full w-full object-cover ken-burns"
-              />
-              <span className="absolute bottom-3 left-3 rounded-sm bg-ink/80 px-3 py-1 font-mono text-[10px] uppercase tracking-widest text-cream">Daily drills</span>
-            </div>
-            <div className="relative aspect-square overflow-hidden rounded-sm">
-              <img
-                src={teamInspection.url}
-                alt="Security inspection at Hesu yard"
-                loading="lazy"
-                className="h-full w-full object-cover transition-transform duration-700 hover:scale-110"
-              />
-              <span className="absolute bottom-3 left-3 rounded-sm bg-ink/80 px-3 py-1 font-mono text-[10px] uppercase tracking-widest text-cream">Inspection</span>
-            </div>
-            <div className="relative aspect-square overflow-hidden rounded-sm bg-ink p-6 text-cream">
-              <p className="eyebrow text-amber">/ Standard</p>
-              <p className="mt-3 font-display text-xl font-black leading-tight">Trained. Uniformed. Accountable.</p>
-              <p className="mt-3 text-xs text-cream/70">Every guard on shift is logged, radio-linked and supervised.</p>
-            </div>
-          </div>
+          <Parallax distance={28} className="grid grid-cols-2 gap-3">
+            <Reveal from="scale" className="col-span-2">
+              <div className="group relative aspect-[16/9] overflow-hidden rounded-sm">
+                <img
+                  src={teamDrill.url}
+                  alt="Hesu security team on drill formation"
+                  loading="lazy"
+                  className="h-full w-full object-cover ken-burns"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-ink/60 to-transparent opacity-70 transition-opacity duration-700 group-hover:opacity-40" />
+                <span className="absolute bottom-3 left-3 rounded-sm bg-ink/80 px-3 py-1 font-mono text-[10px] uppercase tracking-widest text-cream">Daily drills</span>
+              </div>
+            </Reveal>
+            <Reveal from="scale" delay={120}>
+              <div className="relative aspect-square overflow-hidden rounded-sm">
+                <img
+                  src={teamInspection.url}
+                  alt="Security inspection at Hesu yard"
+                  loading="lazy"
+                  className="h-full w-full object-cover transition-transform duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] hover:scale-110"
+                />
+                <span className="absolute bottom-3 left-3 rounded-sm bg-ink/80 px-3 py-1 font-mono text-[10px] uppercase tracking-widest text-cream">Inspection</span>
+              </div>
+            </Reveal>
+            <Reveal from="scale" delay={220}>
+              <Tilt intensity={8}>
+                <div className="relative aspect-square overflow-hidden rounded-sm bg-ink p-6 text-cream fx-grain">
+                  <p className="eyebrow text-amber">/ Standard</p>
+                  <p className="mt-3 font-display text-xl font-black leading-tight">Trained. Uniformed. Accountable.</p>
+                  <p className="mt-3 text-xs text-cream/70">Every guard on shift is logged, radio-linked and supervised.</p>
+                </div>
+              </Tilt>
+            </Reveal>
+          </Parallax>
+
         </div>
       </section>
 
@@ -348,6 +397,63 @@ function Home() {
           ))}
         </div>
       </section>
+
+      {/* LEADERSHIP */}
+      <section className="relative isolate overflow-hidden bg-ink text-cream fx-grain">
+        <Aurora className="opacity-40" />
+        <div className="relative mx-auto max-w-[1400px] px-5 py-24 md:px-10 md:py-32">
+          <div className="grid gap-8 md:grid-cols-[auto_1fr] md:items-end">
+            <Reveal>
+              <p className="eyebrow text-amber">/ Leadership</p>
+              <h2 className="display-xl mt-4">Meet the people<br /><span className="text-amber">in charge.</span></h2>
+            </Reveal>
+            <Reveal delay={140} from="right" className="md:justify-self-end">
+              <p className="max-w-md text-base text-cream/75 md:text-right">
+                Decades of combined port, corridor and customs experience — accountable,
+                reachable and on the ground with every shipment.
+              </p>
+            </Reveal>
+          </div>
+
+          <div className="mt-16 grid gap-6 md:grid-cols-3">
+            {leaders.map((l, i) => (
+              <Reveal key={l.name} delay={i * 130} from="blur">
+                <Tilt intensity={6}>
+                  <article className="group fx-lift relative overflow-hidden rounded-sm border border-cream/12 bg-cream/[0.04] backdrop-blur-md">
+                    <div className="relative aspect-[3/4] overflow-hidden">
+                      <img
+                        src={l.img}
+                        alt={l.name}
+                        width={912}
+                        height={1200}
+                        loading="lazy"
+                        className="h-full w-full object-cover grayscale transition-all duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105 group-hover:grayscale-0"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/25 to-transparent" />
+                      <div className="absolute inset-x-0 bottom-0 translate-y-2 p-6 transition-transform duration-700 group-hover:translate-y-0">
+                        <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-amber">{l.role}</p>
+                        <h3 className="mt-2 font-display text-2xl font-black leading-none">{l.name}</h3>
+                        <p className="mt-3 max-h-0 overflow-hidden text-sm leading-relaxed text-cream/75 opacity-0 transition-all duration-700 group-hover:max-h-32 group-hover:opacity-100">
+                          {l.bio}
+                        </p>
+                      </div>
+                    </div>
+                  </article>
+                </Tilt>
+              </Reveal>
+            ))}
+          </div>
+
+          <Reveal delay={200} className="mt-12">
+            <Magnetic strength={0.2}>
+              <Link to="/team" className="fx-shine inline-flex items-center gap-2 rounded-sm bg-amber px-6 py-3.5 text-sm font-semibold text-ink transition-transform duration-500 hover:-translate-y-0.5">
+                Meet the full team <span aria-hidden>→</span>
+              </Link>
+            </Magnetic>
+          </Reveal>
+        </div>
+      </section>
+
 
       {/* COMMUNITY TEASER */}
       <section className="mx-auto max-w-[1400px] px-5 py-24 md:px-10 md:py-32">
@@ -424,8 +530,10 @@ function Home() {
 
       {/* VALUES */}
       <section className="mx-auto max-w-[1400px] px-5 py-24 md:px-10 md:py-32">
-        <p className="eyebrow text-ink-soft">/ Core values</p>
-        <h2 className="display-xl mt-4 max-w-4xl">Built on trust.<br />Measured by <span className="text-amber">results.</span></h2>
+        <Reveal>
+          <p className="eyebrow text-ink-soft">/ Core values</p>
+          <h2 className="display-xl mt-4 max-w-4xl">Built on trust.<br />Measured by <span className="text-amber">results.</span></h2>
+        </Reveal>
         <div className="mt-16 grid gap-px overflow-hidden rounded-sm bg-border md:grid-cols-4">
           {[
             { k: "Integrity", v: "Transparent dealings with clients, partners and authorities — every transaction, every time." },
@@ -433,37 +541,47 @@ function Home() {
             { k: "Accountability", v: "Clear ownership at every node. Track, trace and prove — from port to recipient." },
             { k: "Partnership", v: "We grow when our clients grow. Long-term relationships over transactional wins." },
           ].map((v, i) => (
-            <div key={v.k} className="flex flex-col gap-3 bg-background p-8 tilt-hover">
-              <span className="font-mono text-xs text-amber">0{i + 1}</span>
-              <h3 className="font-display text-2xl font-black">{v.k}</h3>
-              <p className="text-sm text-ink-soft">{v.v}</p>
-            </div>
+            <Reveal key={v.k} delay={i * 100} from="scale">
+              <div className="group flex h-full flex-col gap-3 bg-background p-8 transition-colors duration-500 hover:bg-secondary">
+                <span className="font-mono text-xs text-amber">0{i + 1}</span>
+                <h3 className="font-display text-2xl font-black transition-transform duration-500 group-hover:-translate-y-0.5">{v.k}</h3>
+                <p className="text-sm text-ink-soft">{v.v}</p>
+              </div>
+            </Reveal>
           ))}
         </div>
       </section>
 
       {/* FINAL CTA */}
       <section className="mx-auto max-w-[1400px] px-5 pb-24 md:px-10">
-        <div className="relative overflow-hidden rounded-sm bg-amber p-10 text-ink md:p-16">
-          <div className="pointer-events-none absolute -right-16 -top-16 h-64 w-64 rounded-full border-4 border-ink/10 spin-slow" />
-          <div className="relative grid items-end gap-10 md:grid-cols-[2fr_1fr]">
-            <div>
-              <p className="eyebrow">/ Ready when you are</p>
-              <h2 className="mt-4 font-display text-4xl font-black leading-none md:text-6xl">
-                Let's move your<br />next container.
-              </h2>
-            </div>
-            <div className="flex flex-wrap gap-3 md:justify-end">
-              <Link to="/contact" className="inline-flex items-center gap-2 rounded-sm bg-ink px-6 py-3.5 text-sm font-semibold text-cream hover:-translate-y-0.5 transition-transform">
-                Request a quote <span aria-hidden>→</span>
-              </Link>
-              <Link to="/services" className="inline-flex items-center gap-2 rounded-sm border border-ink/30 px-6 py-3.5 text-sm font-semibold text-ink hover:bg-ink/10 transition-colors">
-                See services
-              </Link>
+        <Reveal from="scale">
+          <div className="relative overflow-hidden rounded-sm bg-amber p-10 text-ink md:p-16">
+            <div className="pointer-events-none absolute -right-16 -top-16 h-64 w-64 rounded-full border-4 border-ink/10 spin-slow" />
+            <div className="pointer-events-none absolute -left-10 -bottom-16 h-48 w-48 rounded-full border-2 border-ink/10 spin-slow" style={{ animationDirection: "reverse" }} />
+            <div className="relative grid items-end gap-10 md:grid-cols-[2fr_1fr]">
+              <div>
+                <p className="eyebrow">/ Ready when you are</p>
+                <h2 className="mt-4 font-display text-4xl font-black leading-none md:text-6xl">
+                  Let's move your<br />next container.
+                </h2>
+              </div>
+              <div className="flex flex-wrap gap-3 md:justify-end">
+                <Magnetic strength={0.2}>
+                  <Link to="/contact" className="fx-shine inline-flex items-center gap-2 rounded-sm bg-ink px-6 py-3.5 text-sm font-semibold text-cream hover:-translate-y-0.5 transition-transform duration-500">
+                    Request a quote <span aria-hidden>→</span>
+                  </Link>
+                </Magnetic>
+                <Magnetic strength={0.2}>
+                  <Link to="/services" className="fx-shine inline-flex items-center gap-2 rounded-sm border border-ink/30 px-6 py-3.5 text-sm font-semibold text-ink hover:bg-ink/10 transition-colors duration-500">
+                    See services
+                  </Link>
+                </Magnetic>
+              </div>
             </div>
           </div>
-        </div>
+        </Reveal>
       </section>
+
     </>
   );
 }
