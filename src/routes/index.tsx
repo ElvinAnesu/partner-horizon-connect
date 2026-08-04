@@ -1,10 +1,22 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
+import {
+  Reveal,
+  Tilt,
+  Magnetic,
+  Counter,
+  Aurora,
+  Particles,
+  Parallax,
+} from "@/components/fx";
 import heroPort from "@/assets/hero-port.jpg";
 import serviceIcd from "@/assets/service-icd.jpg";
 import serviceCfs from "@/assets/service-cfs.jpg";
 import serviceDistribution from "@/assets/service-distribution.jpg";
 import aboutCta from "@/assets/about-cta.jpg";
+import leaderMd from "@/assets/leader-md.jpg";
+import leaderCeo from "@/assets/leader-ceo.jpg";
+import leaderBh from "@/assets/leader-bh.jpg";
 import teamInspection from "@/assets/hesu-team-inspection.jpg.asset.json";
 import teamDrill from "@/assets/hesu-team-drill.jpg.asset.json";
 import teamCrane from "@/assets/team-crane.jpg.asset.json";
