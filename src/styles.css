@@ -169,3 +169,188 @@
 @keyframes spinSlow {
   to { transform: rotate(360deg); }
 }
+
+/* ================================================================== */
+/* FX LAYER — scroll reveals, tilt/sheen, magnetics, ambient light     */
+/* ================================================================== */
+
+.fx-reveal {
+  opacity: 0;
+  will-change: opacity, transform, filter;
+  transition:
+    opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.95s cubic-bezier(0.16, 1, 0.3, 1),
+    filter 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.fx-from-up      { transform: translate3d(0, 34px, 0); }
+.fx-from-down    { transform: translate3d(0, -28px, 0); }
+.fx-from-left    { transform: translate3d(-38px, 0, 0); }
+.fx-from-right   { transform: translate3d(38px, 0, 0); }
+.fx-from-scale   { transform: scale(0.94); }
+.fx-from-blur    { transform: translate3d(0, 20px, 0); filter: blur(14px); }
+.fx-reveal.fx-in {
+  opacity: 1;
+  transform: none;
+  filter: blur(0);
+}
+
+.fx-tilt {
+  --rx: 0deg;
+  --ry: 0deg;
+  --mx: 50%;
+  --my: 50%;
+  position: relative;
+  transform: perspective(1100px) rotateX(var(--rx)) rotateY(var(--ry));
+  transform-style: preserve-3d;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+.fx-sheen > * { position: relative; }
+.fx-sheen::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.45s ease;
+  background: radial-gradient(
+    420px circle at var(--mx) var(--my),
+    color-mix(in oklab, var(--amber) 26%, transparent),
+    transparent 62%
+  );
+  mix-blend-mode: soft-light;
+}
+.fx-sheen:hover::after { opacity: 1; }
+
+.fx-magnetic {
+  display: inline-flex;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+.fx-cursor-glow {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 5;
+  height: 480px;
+  width: 480px;
+  border-radius: 9999px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.6s ease;
+  background: radial-gradient(
+    circle,
+    color-mix(in oklab, var(--amber) 16%, transparent),
+    transparent 65%
+  );
+  filter: blur(28px);
+  mix-blend-mode: soft-light;
+}
+
+.fx-aurora {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(70px);
+  opacity: 0.42;
+  will-change: transform;
+}
+.fx-aurora-a {
+  height: 30rem; width: 30rem;
+  left: -8rem; top: -6rem;
+  background: color-mix(in oklab, var(--amber) 55%, transparent);
+  animation: auroraDrift 22s ease-in-out infinite alternate;
+}
+.fx-aurora-b {
+  height: 26rem; width: 26rem;
+  right: -6rem; bottom: -8rem;
+  background: color-mix(in oklab, oklch(0.55 0.16 250) 55%, transparent);
+  animation: auroraDrift 28s ease-in-out infinite alternate-reverse;
+}
+.fx-aurora-c {
+  height: 22rem; width: 22rem;
+  left: 45%; top: 35%;
+  background: color-mix(in oklab, var(--amber-soft) 45%, transparent);
+  animation: auroraDrift 34s ease-in-out infinite alternate;
+}
+@keyframes auroraDrift {
+  from { transform: translate3d(0, 0, 0) scale(1); }
+  to   { transform: translate3d(6%, -8%, 0) scale(1.18); }
+}
+
+.fx-particle {
+  position: absolute;
+  border-radius: 9999px;
+  background: color-mix(in oklab, var(--amber) 80%, transparent);
+  box-shadow: 0 0 10px color-mix(in oklab, var(--amber) 60%, transparent);
+  opacity: 0.5;
+  animation: particleRise 14s ease-in-out infinite;
+}
+@keyframes particleRise {
+  0%   { transform: translate3d(0, 12px, 0); opacity: 0; }
+  20%  { opacity: 0.7; }
+  80%  { opacity: 0.5; }
+  100% { transform: translate3d(10px, -70px, 0); opacity: 0; }
+}
+
+@utility fx-shine {
+  position: relative;
+  overflow: hidden;
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    transform: translateX(-120%) skewX(-18deg);
+    background: linear-gradient(
+      90deg,
+      transparent,
+      color-mix(in oklab, var(--cream) 45%, transparent),
+      transparent
+    );
+    transition: transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  &:hover::before { transform: translateX(120%) skewX(-18deg); }
+}
+
+@utility fx-glass {
+  background: color-mix(in oklab, var(--cream) 8%, transparent);
+  backdrop-filter: blur(18px) saturate(140%);
+  border: 1px solid color-mix(in oklab, var(--cream) 18%, transparent);
+}
+
+@utility fx-lift {
+  transition:
+    transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.4s ease;
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 26px 60px -28px color-mix(in oklab, var(--ink) 55%, transparent);
+  }
+}
+
+@utility fx-grain {
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.05;
+    background-image: radial-gradient(color-mix(in oklab, var(--cream) 60%, transparent) 1px, transparent 1px);
+    background-size: 3px 3px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fx-reveal { opacity: 1 !important; transform: none !important; filter: none !important; transition: none !important; }
+  .fx-tilt, .fx-magnetic { transform: none !important; }
+  .fx-aurora, .fx-particle,
+  .ken-burns, .float-slow, .spin-slow, .reveal-up,
+  .marquee-track, .marquee-track-slow, .marquee-track-reverse {
+    animation: none !important;
+  }
+  .fx-cursor-glow { display: none; }
+}
+
