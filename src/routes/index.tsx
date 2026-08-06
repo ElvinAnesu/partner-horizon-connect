@@ -26,8 +26,10 @@ import yardStack from "@/assets/yard-stack.jpg.asset.json";
 import csrFood from "@/assets/csr-food.jpg.asset.json";
 import csrWalk from "@/assets/csr-walk.jpg.asset.json";
 import csrCert from "@/assets/csr-certificate.jpg.asset.json";
+import heroTruck from "@/assets/hero-truck.mp4.asset.json";
 
-const heroSlides = [
+const heroSlides: { src?: string; video?: string; alt: string }[] = [
+  { video: heroTruck.url, alt: "Truck carrying a container through the Hesu container depot" },
   { src: heroPort, alt: "Container freight terminal at golden hour" },
   { src: yardStack.url, alt: "Hesu container yard in Dar es Salaam" },
   { src: teamCrane.url, alt: "Hesu reach-stacker crew" },
@@ -39,6 +41,7 @@ const heroSlides = [
   { src: teamLineup.url, alt: "Hesu ground crew line-up" },
   { src: serviceDistribution, alt: "Distribution and trucking fleet" },
 ];
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
