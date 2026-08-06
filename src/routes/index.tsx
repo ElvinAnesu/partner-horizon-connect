@@ -110,16 +110,31 @@ function Home() {
       {/* HERO */}
       <section className="relative isolate overflow-hidden bg-ink text-cream fx-grain">
         <div className="absolute inset-0 -z-10">
-          {heroSlides.map((s, i) => (
-            <img
-              key={i}
-              src={s.src}
-              alt={s.alt}
-              width={1920}
-              height={1280}
-              className={`absolute inset-0 h-full w-full object-cover transition-all duration-[1400ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${i === slide ? "scale-100 opacity-55 ken-burns blur-0" : "scale-105 opacity-0 blur-sm"}`}
-            />
-          ))}
+          {heroSlides.map((s, i) => {
+            const cls = `absolute inset-0 h-full w-full object-cover transition-all duration-[1400ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${i === slide ? "scale-100 opacity-55 blur-0" : "scale-105 opacity-0 blur-sm"}`;
+            return s.video ? (
+              <video
+                key={i}
+                src={s.video}
+                aria-label={s.alt}
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="auto"
+                className={cls}
+              />
+            ) : (
+              <img
+                key={i}
+                src={s.src}
+                alt={s.alt}
+                width={1920}
+                height={1280}
+                className={`${cls} ${i === slide ? "ken-burns" : ""}`}
+              />
+            );
+          })}
         </div>
         <div className="absolute inset-0 -z-10 bg-gradient-to-br from-ink via-ink/70 to-transparent" />
         <Aurora className="-z-10 opacity-70" />
