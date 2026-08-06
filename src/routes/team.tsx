@@ -17,28 +17,22 @@ export const Route = createFileRoute("/team")({
 
 const executives = [
   {
-    name: "Abdallah H. Mnyandu",
+    name: "S. Alhilal",
     role: "Managing Director",
-    bio: "Founder and strategic leader driving Hesu’s growth across Tanzania and the wider EAC corridor.",
-    initials: "AM",
+    bio: "Strategic leader driving Hesu’s growth across Tanzania and the wider EAC corridor.",
+    initials: "SA",
   },
   {
-    name: "Fatma S. Omar",
-    role: "Operations Director",
-    bio: "Oversees terminal, yard and fleet operations with a focus on safety, throughput and on-time delivery.",
-    initials: "FO",
+    name: "S. Alhilal",
+    role: "Chief Executive Officer",
+    bio: "Sets the group’s direction across terminal, yard, fleet and corridor operations.",
+    initials: "SA",
   },
   {
-    name: "Michael P. Rugakingira",
-    role: "Commercial Manager",
+    name: "S. Balani",
+    role: "Business Head",
     bio: "Leads client partnerships, business development and pricing across the ICD, CFS and distribution lines.",
-    initials: "MR",
-  },
-  {
-    name: "Grace T. Mwombeki",
-    role: "Finance & Compliance Manager",
-    bio: "Ensures financial discipline, statutory compliance and risk management across all Hesu entities.",
-    initials: "GM",
+    initials: "SB",
   },
 ];
 
@@ -124,7 +118,7 @@ function Team() {
           </Reveal>
         </div>
 
-        <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {executives.map((p, i) => (
             <Reveal key={p.name} delay={i * 110} from="blur">
               <Tilt intensity={6}>

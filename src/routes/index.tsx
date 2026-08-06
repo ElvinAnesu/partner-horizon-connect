@@ -26,8 +26,10 @@ import yardStack from "@/assets/yard-stack.jpg.asset.json";
 import csrFood from "@/assets/csr-food.jpg.asset.json";
 import csrWalk from "@/assets/csr-walk.jpg.asset.json";
 import csrCert from "@/assets/csr-certificate.jpg.asset.json";
+import heroTruck from "@/assets/hero-truck.mp4.asset.json";
 
-const heroSlides = [
+const heroSlides: { src?: string; video?: string; alt: string }[] = [
+  { video: heroTruck.url, alt: "Truck carrying a container through the Hesu container depot" },
   { src: heroPort, alt: "Container freight terminal at golden hour" },
   { src: yardStack.url, alt: "Hesu container yard in Dar es Salaam" },
   { src: teamCrane.url, alt: "Hesu reach-stacker crew" },
@@ -39,6 +41,7 @@ const heroSlides = [
   { src: teamLineup.url, alt: "Hesu ground crew line-up" },
   { src: serviceDistribution, alt: "Distribution and trucking fleet" },
 ];
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -85,9 +88,9 @@ const testimonials = [
   { q: "Real people, real trucks, real accountability. Not a broker — an operator.", n: "Grace L.", r: "Logistics Manager, retail chain" },
 ];
 const leaders = [
-  { name: "Abdallah H. Mnyandu", role: "Managing Director", img: leaderMd, bio: "Founder and strategic lead, driving Hesu's growth across Tanzania and the wider EAC corridor." },
-  { name: "Fatma S. Omar", role: "Operations Director", img: leaderCeo, bio: "Oversees terminal, yard and fleet operations with a focus on safety, throughput and on-time delivery." },
-  { name: "Michael P. Rugakingira", role: "Commercial Manager", img: leaderBh, bio: "Leads client partnerships, business development and pricing across ICD, CFS and distribution." },
+  { name: "S. Alhilal", role: "Managing Director", img: leaderMd, bio: "Strategic lead driving Hesu's growth across Tanzania and the wider EAC corridor." },
+  { name: "S. Alhilal", role: "Chief Executive Officer", img: leaderCeo, bio: "Sets the group's direction across terminal, yard, fleet and corridor operations." },
+  { name: "S. Balani", role: "Business Head", img: leaderBh, bio: "Leads client partnerships, business development and pricing across ICD, CFS and distribution." },
 ];
 
 
@@ -107,16 +110,31 @@ function Home() {
       {/* HERO */}
       <section className="relative isolate overflow-hidden bg-ink text-cream fx-grain">
         <div className="absolute inset-0 -z-10">
-          {heroSlides.map((s, i) => (
-            <img
-              key={i}
-              src={s.src}
-              alt={s.alt}
-              width={1920}
-              height={1280}
-              className={`absolute inset-0 h-full w-full object-cover transition-all duration-[1400ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${i === slide ? "scale-100 opacity-55 ken-burns blur-0" : "scale-105 opacity-0 blur-sm"}`}
-            />
-          ))}
+          {heroSlides.map((s, i) => {
+            const cls = `absolute inset-0 h-full w-full object-cover transition-all duration-[1400ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${i === slide ? "scale-100 opacity-55 blur-0" : "scale-105 opacity-0 blur-sm"}`;
+            return s.video ? (
+              <video
+                key={i}
+                src={s.video}
+                aria-label={s.alt}
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="auto"
+                className={cls}
+              />
+            ) : (
+              <img
+                key={i}
+                src={s.src}
+                alt={s.alt}
+                width={1920}
+                height={1280}
+                className={`${cls} ${i === slide ? "ken-burns" : ""}`}
+              />
+            );
+          })}
         </div>
         <div className="absolute inset-0 -z-10 bg-gradient-to-br from-ink via-ink/70 to-transparent" />
         <Aurora className="-z-10 opacity-70" />
