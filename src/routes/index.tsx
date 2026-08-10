@@ -16,7 +16,7 @@ import serviceDistribution from "@/assets/service-distribution.jpg";
 import aboutCta from "@/assets/about-cta.jpg";
 import leaderMd from "@/assets/leader-md.jpg";
 import leaderCeo from "@/assets/leader-ceo.jpg";
-import leaderBh from "@/assets/leader-bh.jpg";
+import sunilBalan from "@/assets/sunil-balan.jpg.asset.json";
 import teamInspection from "@/assets/hesu-team-inspection.jpg.asset.json";
 import teamDrill from "@/assets/hesu-team-drill.jpg.asset.json";
 import teamCrane from "@/assets/team-crane.jpg.asset.json";
