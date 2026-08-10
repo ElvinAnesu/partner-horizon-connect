@@ -121,11 +121,11 @@ function Row({ members, step = 90 }: { members: TeamMember[]; step?: number }) {
       </div>
       <span
         aria-hidden
-        className={`pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-background to-transparent transition-opacity duration-500 ${state.end ? "opacity-0" : "opacity-100"}`}
+        className={`pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-secondary to-transparent transition-opacity duration-500 ${state.end ? "opacity-0" : "opacity-100"}`}
       />
       <span
         aria-hidden
-        className={`pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-background to-transparent transition-opacity duration-500 ${state.start ? "opacity-0" : "opacity-100"}`}
+        className={`pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-secondary to-transparent transition-opacity duration-500 ${state.start ? "opacity-0" : "opacity-100"}`}
       />
       <div className="mt-1 flex justify-end gap-2">
         <NavButton
