@@ -90,7 +90,7 @@ const testimonials = [
 const leaders = [
   { name: "S. Alhilal", role: "Managing Director", img: leaderMd, bio: "Strategic lead driving Hesu's growth across Tanzania and the wider EAC corridor." },
   { name: "S. Alhilal", role: "Chief Executive Officer", img: leaderCeo, bio: "Sets the group's direction across terminal, yard, fleet and corridor operations." },
-  { name: "S. Balani", role: "Business Head", img: leaderBh, bio: "Leads client partnerships, business development and pricing across ICD, CFS and distribution." },
+  { name: "Sunil Balan", role: "Business Head", img: sunilBalan.url, bio: "Leads client partnerships, business development and pricing across ICD, CFS and distribution." },
 ];
 
 
