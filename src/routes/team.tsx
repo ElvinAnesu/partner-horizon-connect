@@ -77,7 +77,7 @@ function Team() {
       <section className="mx-auto max-w-[1400px] px-5 py-24 md:px-10">
         <div className="grid gap-16 md:grid-cols-[1fr_1.4fr]">
           <Reveal>
-            <p className="eyebrow text-ink-soft">/ Leadership</p>
+            <p className="eyebrow text-ink-soft">/ Executive team</p>
             <h2 className="mt-4 font-display text-3xl font-black md:text-4xl">
               Built by operators,<br />guided by experience.
             </h2>
@@ -92,10 +92,10 @@ function Team() {
 
         <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {executives.map((p, i) => (
-            <Reveal key={p.name} delay={i * 110} from="blur">
+            <Reveal key={`${p.name}-${p.role}`} delay={i * 110} from="blur">
               <Tilt intensity={6}>
-                <div className="group fx-lift flex h-full flex-col gap-5 rounded-sm border border-border bg-card p-6 hover:border-amber">
-                  <Avatar initials={p.initials} />
+                <div className="group fx-lift flex h-full flex-col gap-5 overflow-hidden rounded-sm border border-border bg-card p-6 hover:border-amber">
+                  <ProfileAvatar member={p} className="aspect-[4/3] w-full" />
                   <div>
                     <h3 className="font-display text-xl font-black">{p.name}</h3>
                     <p className="mt-1 text-sm font-semibold text-amber">{p.role}</p>
@@ -111,27 +111,17 @@ function Team() {
       <section className="border-y border-border bg-secondary">
         <div className="mx-auto max-w-[1400px] px-5 py-24 md:px-10">
           <Reveal>
-            <p className="eyebrow text-ink-soft">/ Operations team</p>
+            <p className="eyebrow text-ink-soft">/ Leadership team</p>
             <h2 className="mt-4 max-w-3xl font-display text-3xl font-black md:text-4xl">
-              The specialists who keep cargo flowing.
+              The department heads who keep cargo flowing.
             </h2>
           </Reveal>
-          <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {managers.map((p, i) => (
-              <Reveal key={p.name} delay={i * 90}>
-                <div className="group fx-lift flex items-center gap-4 rounded-sm border border-border bg-background p-5 hover:border-amber">
-                  <Avatar initials={p.initials} />
-                  <div>
-                    <h3 className="font-display text-lg font-black">{p.name}</h3>
-                    <p className="text-sm text-ink-soft">{p.role}</p>
-                  </div>
-                </div>
-              </Reveal>
-            ))}
+          <div className="mt-16">
+            <LeadershipCarousel members={leadership} />
           </div>
         </div>
-
       </section>
+
 
       <section className="mx-auto max-w-[1400px] px-5 py-24 md:px-10">
         <Reveal>
