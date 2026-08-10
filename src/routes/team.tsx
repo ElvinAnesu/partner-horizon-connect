@@ -1,72 +1,52 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import aboutCta from "@/assets/about-cta.jpg";
 import { Reveal, Tilt, Aurora, Magnetic } from "@/components/fx";
+import { LeadershipCarousel, ProfileAvatar, type TeamMember } from "@/components/leadership-carousel";
 
 export const Route = createFileRoute("/team")({
   head: () => ({
     meta: [
       { title: "Team — Hesu Investment Ltd" },
-      { name: "description", content: "Meet the experienced leaders and operators behind Hesu Investment Ltd's logistics and supply chain services in Tanzania." },
+      { name: "description", content: "Meet the executive and leadership teams behind Hesu Investment Ltd's logistics and supply chain services in Tanzania." },
       { property: "og:title", content: "Our Team — Hesu Investment Ltd" },
-      { property: "og:description", content: "The people behind Hesu Investment Ltd's logistics and supply chain services in Tanzania." },
+      { property: "og:description", content: "The executives and department heads behind Hesu Investment Ltd's logistics and supply chain services in Tanzania." },
       { property: "og:image", content: aboutCta },
     ],
   }),
   component: Team,
 });
 
-const executives = [
+const executives: TeamMember[] = [
   {
     name: "S. Alhilal",
     role: "Managing Director",
     bio: "Strategic leader driving Hesu’s growth across Tanzania and the wider EAC corridor.",
-    initials: "SA",
   },
   {
     name: "S. Alhilal",
     role: "Chief Executive Officer",
     bio: "Sets the group’s direction across terminal, yard, fleet and corridor operations.",
-    initials: "SA",
   },
   {
-    name: "S. Balani",
+    name: "Sunil Balan",
     role: "Business Head",
     bio: "Leads client partnerships, business development and pricing across the ICD, CFS and distribution lines.",
-    initials: "SB",
   },
 ];
 
-const managers = [
-  {
-    name: "Emmanuel B. Kessy",
-    role: "Yard & Container Operations Manager",
-    initials: "EK",
-  },
-  {
-    name: "Salome J. Kinyota",
-    role: "Customs & Documentation Supervisor",
-    initials: "SK",
-  },
-  {
-    name: "David M. Ndaki",
-    role: "Fleet & Distribution Manager",
-    initials: "DN",
-  },
-  {
-    name: "Joyce P. Lwezaula",
-    role: "Warehouse & Inventory Lead",
-    initials: "JL",
-  },
-  {
-    name: "Hassan R. Mwinyi",
-    role: "Health, Safety & Environment Officer",
-    initials: "HM",
-  },
-  {
-    name: "Regina N. Kitundu",
-    role: "Customer Relations & Sales Coordinator",
-    initials: "RK",
-  },
+const leadership: TeamMember[] = [
+  { name: "Gain Tawodzera", role: "IT Head", bio: "Leads the IT function, driving technology infrastructure, systems and digital support across the organization." },
+  { name: "Neema Mtui", role: "HSE Head", bio: "Leads health, safety and environment, upholding safe working standards across every site and operation." },
+  { name: "Meheroon Kassu", role: "HR Head", bio: "Leads the human resources function, covering people development, welfare and organizational capability." },
+  { name: "Faustine Shilinde", role: "Engineering Head", bio: "Leads engineering, overseeing equipment reliability, maintenance planning and technical standards." },
+  { name: "Chrispass Mwamachi", role: "Procurement Head", bio: "Leads procurement, managing sourcing, supplier relationships and materials availability." },
+  { name: "Ahmed Razeen", role: "Workshop Head", bio: "Leads workshop operations, keeping the fleet and yard equipment serviced and available." },
+  { name: "Shonronal Joseph", role: "Finance Head", bio: "Leads the finance function, covering financial control, reporting and commercial governance." },
+  { name: "Steven Nguma", role: "Transport Head", bio: "Leads transport operations, coordinating fleet deployment and corridor movements." },
+  { name: "Maliki Omary", role: "Security Head", bio: "Leads security, protecting cargo, people and facilities through trained in-house teams." },
+  { name: "Aristid Temu", role: "ICD Operations Head", bio: "Leads inland container depot operations, from yard planning to container handling and release." },
+  { name: "Fabian Godefrey", role: "Port Operations Head", bio: "Leads port operations, coordinating quayside interfaces, gate flows and documentation." },
+  { name: "Issa Kanyunya", role: "CFS Operations Head", bio: "Leads container freight station operations, covering stripping, stuffing and cargo custody." },
 ];
 
 const values = [
@@ -76,14 +56,6 @@ const values = [
   { k: "Trust", v: "Transparent, accountable teams build the long-term partnerships that move East African trade." },
 ];
 
-function Avatar({ initials }: { initials: string }) {
-  return (
-    <div className="relative flex h-20 w-20 shrink-0 items-center justify-center rounded-full bg-ink text-cream font-display text-2xl font-black tracking-tight transition-all duration-700 group-hover:shadow-[0_0_0_6px_color-mix(in_oklab,var(--amber)_22%,transparent)] md:h-24 md:w-24 md:text-3xl">
-      <span className="pointer-events-none absolute inset-0 rounded-full border border-amber/40 opacity-0 transition-all duration-700 group-hover:scale-110 group-hover:opacity-100" />
-      {initials}
-    </div>
-  );
-}
 
 
 function Team() {
