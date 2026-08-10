@@ -1,72 +1,52 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import aboutCta from "@/assets/about-cta.jpg";
 import { Reveal, Tilt, Aurora, Magnetic } from "@/components/fx";
+import { LeadershipCarousel, ProfileAvatar, type TeamMember } from "@/components/leadership-carousel";
 
 export const Route = createFileRoute("/team")({
   head: () => ({
     meta: [
       { title: "Team — Hesu Investment Ltd" },
-      { name: "description", content: "Meet the experienced leaders and operators behind Hesu Investment Ltd's logistics and supply chain services in Tanzania." },
+      { name: "description", content: "Meet the executive and leadership teams behind Hesu Investment Ltd's logistics and supply chain services in Tanzania." },
       { property: "og:title", content: "Our Team — Hesu Investment Ltd" },
-      { property: "og:description", content: "The people behind Hesu Investment Ltd's logistics and supply chain services in Tanzania." },
+      { property: "og:description", content: "The executives and department heads behind Hesu Investment Ltd's logistics and supply chain services in Tanzania." },
       { property: "og:image", content: aboutCta },
     ],
   }),
   component: Team,
 });
 
-const executives = [
+const executives: TeamMember[] = [
   {
     name: "S. Alhilal",
     role: "Managing Director",
     bio: "Strategic leader driving Hesu’s growth across Tanzania and the wider EAC corridor.",
-    initials: "SA",
   },
   {
     name: "S. Alhilal",
     role: "Chief Executive Officer",
     bio: "Sets the group’s direction across terminal, yard, fleet and corridor operations.",
-    initials: "SA",
   },
   {
-    name: "S. Balani",
+    name: "Sunil Balan",
     role: "Business Head",
     bio: "Leads client partnerships, business development and pricing across the ICD, CFS and distribution lines.",
-    initials: "SB",
   },
 ];
 
-const managers = [
-  {
-    name: "Emmanuel B. Kessy",
-    role: "Yard & Container Operations Manager",
-    initials: "EK",
-  },
-  {
-    name: "Salome J. Kinyota",
-    role: "Customs & Documentation Supervisor",
-    initials: "SK",
-  },
-  {
-    name: "David M. Ndaki",
-    role: "Fleet & Distribution Manager",
-    initials: "DN",
-  },
-  {
-    name: "Joyce P. Lwezaula",
-    role: "Warehouse & Inventory Lead",
-    initials: "JL",
-  },
-  {
-    name: "Hassan R. Mwinyi",
-    role: "Health, Safety & Environment Officer",
-    initials: "HM",
-  },
-  {
-    name: "Regina N. Kitundu",
-    role: "Customer Relations & Sales Coordinator",
-    initials: "RK",
-  },
+const leadership: TeamMember[] = [
+  { name: "Gain Tawodzera", role: "IT Head", bio: "Leads the IT function, driving technology infrastructure, systems and digital support across the organization." },
+  { name: "Neema Mtui", role: "HSE Head", bio: "Leads health, safety and environment, upholding safe working standards across every site and operation." },
+  { name: "Meheroon Kassu", role: "HR Head", bio: "Leads the human resources function, covering people development, welfare and organizational capability." },
+  { name: "Faustine Shilinde", role: "Engineering Head", bio: "Leads engineering, overseeing equipment reliability, maintenance planning and technical standards." },
+  { name: "Chrispass Mwamachi", role: "Procurement Head", bio: "Leads procurement, managing sourcing, supplier relationships and materials availability." },
+  { name: "Ahmed Razeen", role: "Workshop Head", bio: "Leads workshop operations, keeping the fleet and yard equipment serviced and available." },
+  { name: "Shonronal Joseph", role: "Finance Head", bio: "Leads the finance function, covering financial control, reporting and commercial governance." },
+  { name: "Steven Nguma", role: "Transport Head", bio: "Leads transport operations, coordinating fleet deployment and corridor movements." },
+  { name: "Maliki Omary", role: "Security Head", bio: "Leads security, protecting cargo, people and facilities through trained in-house teams." },
+  { name: "Aristid Temu", role: "ICD Operations Head", bio: "Leads inland container depot operations, from yard planning to container handling and release." },
+  { name: "Fabian Godefrey", role: "Port Operations Head", bio: "Leads port operations, coordinating quayside interfaces, gate flows and documentation." },
+  { name: "Issa Kanyunya", role: "CFS Operations Head", bio: "Leads container freight station operations, covering stripping, stuffing and cargo custody." },
 ];
 
 const values = [
@@ -76,14 +56,6 @@ const values = [
   { k: "Trust", v: "Transparent, accountable teams build the long-term partnerships that move East African trade." },
 ];
 
-function Avatar({ initials }: { initials: string }) {
-  return (
-    <div className="relative flex h-20 w-20 shrink-0 items-center justify-center rounded-full bg-ink text-cream font-display text-2xl font-black tracking-tight transition-all duration-700 group-hover:shadow-[0_0_0_6px_color-mix(in_oklab,var(--amber)_22%,transparent)] md:h-24 md:w-24 md:text-3xl">
-      <span className="pointer-events-none absolute inset-0 rounded-full border border-amber/40 opacity-0 transition-all duration-700 group-hover:scale-110 group-hover:opacity-100" />
-      {initials}
-    </div>
-  );
-}
 
 
 function Team() {
@@ -105,7 +77,7 @@ function Team() {
       <section className="mx-auto max-w-[1400px] px-5 py-24 md:px-10">
         <div className="grid gap-16 md:grid-cols-[1fr_1.4fr]">
           <Reveal>
-            <p className="eyebrow text-ink-soft">/ Leadership</p>
+            <p className="eyebrow text-ink-soft">/ Executive team</p>
             <h2 className="mt-4 font-display text-3xl font-black md:text-4xl">
               Built by operators,<br />guided by experience.
             </h2>
@@ -120,10 +92,10 @@ function Team() {
 
         <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {executives.map((p, i) => (
-            <Reveal key={p.name} delay={i * 110} from="blur">
+            <Reveal key={`${p.name}-${p.role}`} delay={i * 110} from="blur">
               <Tilt intensity={6}>
-                <div className="group fx-lift flex h-full flex-col gap-5 rounded-sm border border-border bg-card p-6 hover:border-amber">
-                  <Avatar initials={p.initials} />
+                <div className="group fx-lift flex h-full flex-col gap-5 overflow-hidden rounded-sm border border-border bg-card p-6 hover:border-amber">
+                  <ProfileAvatar member={p} className="aspect-[4/3] w-full" />
                   <div>
                     <h3 className="font-display text-xl font-black">{p.name}</h3>
                     <p className="mt-1 text-sm font-semibold text-amber">{p.role}</p>
@@ -139,27 +111,17 @@ function Team() {
       <section className="border-y border-border bg-secondary">
         <div className="mx-auto max-w-[1400px] px-5 py-24 md:px-10">
           <Reveal>
-            <p className="eyebrow text-ink-soft">/ Operations team</p>
+            <p className="eyebrow text-ink-soft">/ Leadership team</p>
             <h2 className="mt-4 max-w-3xl font-display text-3xl font-black md:text-4xl">
-              The specialists who keep cargo flowing.
+              The department heads who keep cargo flowing.
             </h2>
           </Reveal>
-          <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {managers.map((p, i) => (
-              <Reveal key={p.name} delay={i * 90}>
-                <div className="group fx-lift flex items-center gap-4 rounded-sm border border-border bg-background p-5 hover:border-amber">
-                  <Avatar initials={p.initials} />
-                  <div>
-                    <h3 className="font-display text-lg font-black">{p.name}</h3>
-                    <p className="text-sm text-ink-soft">{p.role}</p>
-                  </div>
-                </div>
-              </Reveal>
-            ))}
+          <div className="mt-16">
+            <LeadershipCarousel members={leadership} />
           </div>
         </div>
-
       </section>
+
 
       <section className="mx-auto max-w-[1400px] px-5 py-24 md:px-10">
         <Reveal>
