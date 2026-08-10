@@ -1,5 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import aboutCta from "@/assets/about-cta.jpg";
+import sunilBalan from "@/assets/sunil-balan.jpg.asset.json";
+
 import { Reveal, Tilt, Aurora, Magnetic } from "@/components/fx";
 import { LeadershipCarousel, ProfileAvatar, type TeamMember } from "@/components/leadership-carousel";
 
