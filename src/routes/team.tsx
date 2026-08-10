@@ -30,8 +30,10 @@ const executives: TeamMember[] = [
   {
     name: "Sunil Balan",
     role: "Business Head",
+    image: sunilBalan.url,
     bio: "Leads client partnerships, business development and pricing across the ICD, CFS and distribution lines.",
   },
+
 ];
 
 const leadership: TeamMember[] = [
