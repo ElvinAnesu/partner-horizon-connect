@@ -2,6 +2,8 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useRef, useState } from "react";
 import aboutCta from "@/assets/about-cta.jpg";
 import sunilBalan from "@/assets/img/team/sunil.jpeg";
+import salimMkongo from "@/assets/img/team/salim.jpeg";
+import gainTawodzera from "@/assets/img/team/gain.jpeg";
 
 import { Reveal, Tilt, Aurora, Magnetic } from "@/components/fx";
 import { LeadershipCarousel, ProfileAvatar, openMemberWithFlip, type TeamMember } from "@/components/leadership-carousel";
@@ -57,10 +59,12 @@ const leadership: TeamMember[] = [
     name: "Gain Tawodzera",
     role: "IT Head",
     department: "Technology",
-    bio: "Leads the IT function, driving technology infrastructure, systems and digital support across the organization.",
-    focus: ["Infrastructure", "Systems", "Support"],
+    image: gainTawodzera,
+    imagePosition: "object-top",
+    bio: "IT Head with credentials in business management, information technology, MBA Data Analytics, and enterprise systems (SAP, Oracle, CISA).",
+    focus: ["IT systems", "Data analytics", "ERP"],
     detail:
-      "Gain leads Hesu\u2019s IT function — technology infrastructure, systems reliability and digital support that keep yard, fleet and office teams connected. The work underpins visibility, documentation and day-to-day operational tools.",
+      "Gain Tawodzera leads Hesu\u2019s IT function with a strong academic and professional foundation in technology and business systems.\n\nDegrees\nBusiness Management and Information Technology (BBMIT)\nBachelor\u2019s in Information Technology\n\nMasters\nMBA — Data Analytics\n\nCertificates\nSAP B1 Associate (C_TB120)\nCISA\nEssentials of SAP GRC\nOracle Cloud Infrastructure\nOracle Cloud Data Migration\nElectronic Data Processing\nISO1\nITIL 3\n\nMembership\nISACA\nAdvisera",
   },
   {
     name: "Neema Mtui",
@@ -160,6 +164,17 @@ const leadership: TeamMember[] = [
     focus: ["LCL", "Stuffing", "Custody"],
     detail:
       "Issa leads container freight station operations — stripping, stuffing and cargo custody for groupage and value-added handling under secure, bonded conditions.",
+  },
+  {
+    name: "Salim Mkongo",
+    role: "Machinery Manager",
+    department: "Machinery",
+    image: salimMkongo,
+    imagePosition: "object-top",
+    bio: "Electrical and Electronics Engineer leading heavy equipment maintenance, machinery operations and technical teams at Hesu.",
+    focus: ["Maintenance", "Heavy equipment", "Uptime"],
+    detail:
+      "Salim Mkongo is an experienced Electrical and Electronics Engineer with a strong background in heavy equipment maintenance, machinery operations, and technical leadership. He holds a Bachelor\u2019s Degree in Electrical and Electronics Engineering, supported by an Ordinary Diploma in Electronics and Telecommunications Engineering.\n\nWith professional experience spanning the mining and machinery sectors, Salim has worked with leading organizations including Shanta Gold Mine and Mantrac Tanzania, where he developed extensive expertise in equipment maintenance, diagnostics, and operational efficiency. His hands-on experience with heavy machinery and industrial systems has enabled him to successfully manage complex maintenance challenges while ensuring maximum equipment reliability and uptime.\n\nCurrently serving as Machinery Supervisor at HESU Investments Ltd, Salim oversees machinery operations, preventive and corrective maintenance programs, and the performance of technical teams. He is responsible for ensuring that equipment operates safely, efficiently, and in alignment with organizational objectives.\n\nPassionate about machinery reliability, continuous improvement, and problem-solving, Salim is committed to building efficient maintenance systems that enhance productivity, reduce downtime, and support sustainable operational excellence.",
   },
 ];
 

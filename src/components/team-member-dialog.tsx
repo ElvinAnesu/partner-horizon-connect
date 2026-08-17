@@ -65,7 +65,9 @@ export function TeamMemberDialog({ member, open, onOpenChange }: TeamMemberDialo
                 <p className="eyebrow text-ink-soft">About</p>
                 <div className="mt-3 space-y-4 text-sm leading-relaxed text-ink-soft md:text-base">
                   {(member.detail ?? member.bio).split(/\n\n+/).map((para) => (
-                    <p key={para.slice(0, 48)}>{para}</p>
+                    <p key={para.slice(0, 48)} className="whitespace-pre-line">
+                      {para}
+                    </p>
                   ))}
                 </div>
               </div>
