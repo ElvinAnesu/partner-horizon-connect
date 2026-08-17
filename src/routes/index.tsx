@@ -16,32 +16,21 @@ import serviceDistribution from "@/assets/service-distribution.jpg";
 import aboutCta from "@/assets/about-cta.jpg";
 import leaderMd from "@/assets/leader-md.jpg";
 import leaderCeo from "@/assets/leader-ceo.jpg";
-import sunilBalan from "@/assets/sunil-balan.jpg.asset.json";
+import sunilBalan from "@/assets/img/team/sunil.jpeg";
 import teamInspection from "@/assets/hesu-team-inspection.jpg.asset.json";
 import teamDrill from "@/assets/hesu-team-drill.jpg.asset.json";
-import teamCrane from "@/assets/team-crane.jpg.asset.json";
-import teamYard from "@/assets/team-yard.jpg.asset.json";
-import teamLineup from "@/assets/team-lineup.jpg.asset.json";
-import yardStack from "@/assets/yard-stack.jpg.asset.json";
 import csrFood from "@/assets/csr-food.jpg.asset.json";
 import csrWalk from "@/assets/csr-walk.jpg.asset.json";
 import csrCert from "@/assets/csr-certificate.jpg.asset.json";
-import heroTruck from "@/assets/hero-truck.mp4.asset.json";
+import { galleryImages } from "@/lib/gallery-images";
 
-const heroSlides: { src?: string; video?: string; alt: string }[] = [
-  { video: heroTruck.url, alt: "Truck carrying a container through the Hesu container depot" },
-  { src: heroPort, alt: "Container freight terminal at golden hour" },
-  { src: yardStack.url, alt: "Hesu container yard in Dar es Salaam" },
-  { src: teamCrane.url, alt: "Hesu reach-stacker crew" },
-  { src: teamInspection.url, alt: "Hesu operations team inspection" },
-  { src: serviceIcd, alt: "Inland container depot" },
-  { src: teamYard.url, alt: "Yard operations team" },
-  { src: teamDrill.url, alt: "Hesu security team on drill" },
-  { src: serviceCfs, alt: "Container freight station operations" },
-  { src: teamLineup.url, alt: "Hesu ground crew line-up" },
-  { src: serviceDistribution, alt: "Distribution and trucking fleet" },
-];
-
+const heroSlides: { src: string; alt: string }[] = galleryImages.map((src, i) => ({
+  src,
+  alt: `Hesu gallery ${i + 1}`,
+}));
+const heroOgImage = galleryImages[0] ?? heroPort;
+const faceRowA = galleryImages.filter((_, i) => i % 2 === 0);
+const faceRowB = galleryImages.filter((_, i) => i % 2 === 1);
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -50,8 +39,8 @@ export const Route = createFileRoute("/")({
       { name: "description", content: "Inland container depot, freight station, warehousing and distribution across Tanzania and East Africa." },
       { property: "og:title", content: "Hesu Investment Ltd" },
       { property: "og:description", content: "Integrated logistics powering trade across Tanzania and East Africa." },
-      { property: "og:image", content: heroPort },
-      { name: "twitter:image", content: heroPort },
+      { property: "og:image", content: heroOgImage },
+      { name: "twitter:image", content: heroOgImage },
     ],
   }),
   component: Home,
@@ -90,7 +79,7 @@ const testimonials = [
 const leaders = [
   { name: "S. Alhilal", role: "Managing Director", img: leaderMd, bio: "Strategic lead driving Hesu's growth across Tanzania and the wider EAC corridor." },
   { name: "S. Alhilal", role: "Chief Executive Officer", img: leaderCeo, bio: "Sets the group's direction across terminal, yard, fleet and corridor operations." },
-  { name: "Sunil Balan", role: "Business Head", img: sunilBalan.url, bio: "Leads client partnerships, business development and pricing across ICD, CFS and distribution." },
+  { name: "Sunil Balan", role: "Business Head", img: sunilBalan, bio: "29+ years in supply chain and logistics — ICD, CFS, warehousing and fleet leadership across Africa and Asia.", imagePosition: "object-top" },
 ];
 
 
@@ -112,21 +101,9 @@ function Home() {
         <div className="absolute inset-0 -z-10">
           {heroSlides.map((s, i) => {
             const cls = `absolute inset-0 h-full w-full object-cover transition-all duration-[1400ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${i === slide ? "scale-100 opacity-55 blur-0" : "scale-105 opacity-0 blur-sm"}`;
-            return s.video ? (
-              <video
-                key={i}
-                src={s.video}
-                aria-label={s.alt}
-                autoPlay
-                muted
-                loop
-                playsInline
-                preload="auto"
-                className={cls}
-              />
-            ) : (
+            return (
               <img
-                key={i}
+                key={s.src}
                 src={s.src}
                 alt={s.alt}
                 width={1920}
@@ -401,16 +378,16 @@ function Home() {
           </Link>
         </div>
         <div className="marquee-track-slow flex w-max gap-4">
-          {[teamCrane, teamYard, teamLineup, yardStack, teamInspection, teamDrill, teamCrane, teamYard, teamLineup, yardStack].map((it, i) => (
-            <div key={i} className="relative h-56 w-80 shrink-0 overflow-hidden rounded-sm md:h-72 md:w-96">
-              <img src={it.url} alt="" loading="lazy" className="h-full w-full object-cover" />
+          {[...faceRowA, ...faceRowA].map((src, i) => (
+            <div key={`a-${i}`} className="relative h-56 w-80 shrink-0 overflow-hidden rounded-sm md:h-72 md:w-96">
+              <img src={src} alt="" loading="lazy" className="h-full w-full object-cover" />
             </div>
           ))}
         </div>
         <div className="marquee-track-reverse mt-4 flex w-max gap-4">
-          {[csrFood, csrWalk, csrCert, yardStack, teamLineup, teamCrane, csrFood, csrWalk, csrCert, yardStack].map((it, i) => (
-            <div key={i} className="relative h-44 w-64 shrink-0 overflow-hidden rounded-sm md:h-56 md:w-80">
-              <img src={it.url} alt="" loading="lazy" className="h-full w-full object-cover" />
+          {[...faceRowB, ...faceRowB].map((src, i) => (
+            <div key={`b-${i}`} className="relative h-44 w-64 shrink-0 overflow-hidden rounded-sm md:h-56 md:w-80">
+              <img src={src} alt="" loading="lazy" className="h-full w-full object-cover" />
             </div>
           ))}
         </div>
@@ -445,7 +422,7 @@ function Home() {
                         width={912}
                         height={1200}
                         loading="lazy"
-                        className="h-full w-full object-cover grayscale transition-all duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105 group-hover:grayscale-0"
+                        className={`h-full w-full object-cover grayscale transition-all duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105 group-hover:grayscale-0 ${l.imagePosition ?? "object-center"}`}
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/25 to-transparent" />
                       <div className="absolute inset-x-0 bottom-0 translate-y-2 p-6 transition-transform duration-700 group-hover:translate-y-0">
@@ -570,6 +547,31 @@ function Home() {
         </div>
       </section>
 
+      {/* CAREERS TEASER */}
+      <section className="mx-auto max-w-[1400px] px-5 pb-16 md:px-10">
+        <Reveal>
+          <div className="flex flex-col items-start justify-between gap-6 rounded-sm border border-border bg-secondary p-8 md:flex-row md:items-center md:p-10">
+            <div>
+              <p className="eyebrow text-ink-soft">/ We&apos;re hiring</p>
+              <h2 className="mt-3 font-display text-2xl font-black md:text-3xl">
+                Transit Driver — join the Hesu fleet.
+              </h2>
+              <p className="mt-2 max-w-xl text-sm text-ink-soft">
+                Corridor routes across Tanzania and the EAC. Apply in minutes.
+              </p>
+            </div>
+            <Magnetic strength={0.2}>
+              <Link
+                to="/careers"
+                className="fx-shine inline-flex items-center gap-2 rounded-sm bg-ink px-6 py-3.5 text-sm font-semibold text-cream transition-transform duration-500 hover:-translate-y-0.5"
+              >
+                View careers <span aria-hidden>→</span>
+              </Link>
+            </Magnetic>
+          </div>
+        </Reveal>
+      </section>
+
       {/* FINAL CTA */}
       <section className="mx-auto max-w-[1400px] px-5 pb-24 md:px-10">
         <Reveal from="scale">
@@ -580,7 +582,7 @@ function Home() {
               <div>
                 <p className="eyebrow">/ Ready when you are</p>
                 <h2 className="mt-4 font-display text-4xl font-black leading-none md:text-6xl">
-                  Let's move your<br />next container.
+                  Let&apos;s move your<br />next container.
                 </h2>
               </div>
               <div className="flex flex-wrap gap-3 md:justify-end">

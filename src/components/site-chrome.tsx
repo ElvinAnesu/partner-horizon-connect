@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
-import logoAsset from "@/assets/HESU-Logo_1.png.asset.json";
+import logo from "@/assets/img/hesu-logo.png";
 import { Magnetic } from "@/components/fx";
 
 
@@ -11,6 +11,7 @@ const nav = [
   { to: "/team", label: "Team" },
   { to: "/gallery", label: "Gallery" },
   { to: "/community", label: "Community" },
+  { to: "/careers", label: "Careers" },
   { to: "/contact", label: "Contact" },
 ] as const;
 
@@ -21,11 +22,11 @@ export function SiteHeader() {
       <div className="mx-auto grid max-w-[1400px] grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-5 py-4 md:px-10">
         <Link to="/" className="group flex min-w-0 items-center gap-3">
           <img
-            src={logoAsset.url}
+            src={logo}
             alt="Hesu Investment Ltd"
             width={200}
             height={60}
-            className="h-10 w-auto object-contain transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.04]"
+            className="h-12 w-auto object-contain transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.04]"
           />
         </Link>
 
@@ -89,11 +90,11 @@ export function SiteFooter() {
         <div>
           <div className="flex items-center gap-3">
             <img
-              src={logoAsset.url}
+              src={logo}
               alt="Hesu Investment Ltd"
               width={200}
               height={60}
-              className="h-10 w-auto object-contain"
+              className="h-12 w-auto object-contain"
             />
           </div>
 

@@ -1,9 +1,11 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useRef, useState } from "react";
 import aboutCta from "@/assets/about-cta.jpg";
-import sunilBalan from "@/assets/sunil-balan.jpg.asset.json";
+import sunilBalan from "@/assets/img/team/sunil.jpeg";
 
 import { Reveal, Tilt, Aurora, Magnetic } from "@/components/fx";
-import { LeadershipCarousel, ProfileAvatar, type TeamMember } from "@/components/leadership-carousel";
+import { LeadershipCarousel, ProfileAvatar, openMemberWithFlip, type TeamMember } from "@/components/leadership-carousel";
+import { TeamMemberDialog } from "@/components/team-member-dialog";
 
 export const Route = createFileRoute("/team")({
   head: () => ({
@@ -22,47 +24,163 @@ const executives: TeamMember[] = [
   {
     name: "S. Alhilal",
     role: "Managing Director",
-    bio: "Strategic leader driving Hesu’s growth across Tanzania and the wider EAC corridor.",
+    department: "Executive",
+    bio: "Strategic leader driving Hesu\u2019s growth across Tanzania and the wider EAC corridor.",
+    focus: ["Strategy", "Growth", "EAC corridor"],
+    detail:
+      "As Managing Director, S. Alhilal sets the strategic pace for Hesu across Tanzania and the wider EAC corridor — aligning terminal, yard and fleet capacity with the way Africa trades. The focus is long-term partnerships, operational discipline and growth that compounds for clients and communities.",
   },
   {
     name: "S. Alhilal",
     role: "Chief Executive Officer",
-    bio: "Sets the group’s direction across terminal, yard, fleet and corridor operations.",
+    department: "Executive",
+    bio: "Sets the group\u2019s direction across terminal, yard, fleet and corridor operations.",
+    focus: ["Operations", "Direction", "Accountability"],
+    detail:
+      "As Chief Executive Officer, S. Alhilal directs Hesu\u2019s day-to-day and long-range operating model across terminal, yard, fleet and corridor lines. The mandate is clear ownership at every node — from port interface to final delivery — with integrity and measurable results.",
   },
   {
     name: "Sunil Balan",
     role: "Business Head",
-    image: sunilBalan.url,
-    bio: "Leads client partnerships, business development and pricing across the ICD, CFS and distribution lines.",
+    department: "Executive",
+    image: sunilBalan,
+    imagePosition: "object-top",
+    bio: "Supply chain and logistics executive with 29+ years of international experience across ICD, CFS, warehousing and fleet operations.",
+    focus: ["Supply chain", "ICD / CFS", "Fleet ops", "Procurement"],
+    detail:
+      "Sunilkumar Gopichand Balani is a Supply Chain and Logistics executive with over 29 years of international experience spanning logistics, oil & gas, EPC, petrochemicals, power generation, shipbuilding, chemicals, beverages, and manufacturing. He has held senior leadership positions across Africa and Asia, leading large-scale supply chain, warehousing, procurement, transportation, and operational excellence initiatives.\n\nCurrently serving in Tanzania, Sunil has played a pivotal role in developing and managing integrated logistics operations, including Inland Container Depots (ICD), Container Freight Stations (CFS), warehousing facilities, fertilizer terminals, and fleet operations exceeding 300 vehicles. He has delivered complex logistics projects across East and Southern Africa while driving automation, cost optimization, process improvement, and customer satisfaction.\n\nAn MBA-qualified Supply Chain professional and Mechanical Engineer, Sunil brings deep expertise in strategic sourcing, procurement, contract management, inventory optimization, ERP systems, and supply chain transformation — consistently delivering operational efficiencies, cost savings, and sustainable business growth.",
   },
-
 ];
 
 const leadership: TeamMember[] = [
-  { name: "Gain Tawodzera", role: "IT Head", bio: "Leads the IT function, driving technology infrastructure, systems and digital support across the organization." },
-  { name: "Neema Mtui", role: "HSE Head", bio: "Leads health, safety and environment, upholding safe working standards across every site and operation." },
-  { name: "Meheroon Kassu", role: "HR Head", bio: "Leads the human resources function, covering people development, welfare and organizational capability." },
-  { name: "Faustine Shilinde", role: "Engineering Head", bio: "Leads engineering, overseeing equipment reliability, maintenance planning and technical standards." },
-  { name: "Chrispass Mwamachi", role: "Procurement Head", bio: "Leads procurement, managing sourcing, supplier relationships and materials availability." },
-  { name: "Ahmed Razeen", role: "Workshop Head", bio: "Leads workshop operations, keeping the fleet and yard equipment serviced and available." },
-  { name: "Shonronal Joseph", role: "Finance Head", bio: "Leads the finance function, covering financial control, reporting and commercial governance." },
-  { name: "Steven Nguma", role: "Transport Head", bio: "Leads transport operations, coordinating fleet deployment and corridor movements." },
-  { name: "Maliki Omary", role: "Security Head", bio: "Leads security, protecting cargo, people and facilities through trained in-house teams." },
-  { name: "Aristid Temu", role: "ICD Operations Head", bio: "Leads inland container depot operations, from yard planning to container handling and release." },
-  { name: "Fabian Godefrey", role: "Port Operations Head", bio: "Leads port operations, coordinating quayside interfaces, gate flows and documentation." },
-  { name: "Issa Kanyunya", role: "CFS Operations Head", bio: "Leads container freight station operations, covering stripping, stuffing and cargo custody." },
+  {
+    name: "Gain Tawodzera",
+    role: "IT Head",
+    department: "Technology",
+    bio: "Leads the IT function, driving technology infrastructure, systems and digital support across the organization.",
+    focus: ["Infrastructure", "Systems", "Support"],
+    detail:
+      "Gain leads Hesu\u2019s IT function — technology infrastructure, systems reliability and digital support that keep yard, fleet and office teams connected. The work underpins visibility, documentation and day-to-day operational tools.",
+  },
+  {
+    name: "Neema Mtui",
+    role: "HSE Head",
+    department: "HSE",
+    bio: "Leads health, safety and environment, upholding safe working standards across every site and operation.",
+    focus: ["Safety", "Environment", "Standards"],
+    detail:
+      "Neema leads health, safety and environment across Hesu sites — from yards and workshops to corridor movements. The priority is clear standards, trained teams and a culture where every container move is also a safe move.",
+  },
+  {
+    name: "Meheroon Kassu",
+    role: "HR Head",
+    department: "People",
+    bio: "Leads the human resources function, covering people development, welfare and organizational capability.",
+    focus: ["People", "Welfare", "Capability"],
+    detail:
+      "Meheroon leads human resources at Hesu — people development, welfare and organizational capability. From recruitment to on-the-job growth, the focus is building teams that own outcomes from gate to final mile.",
+  },
+  {
+    name: "Faustine Shilinde",
+    role: "Engineering Head",
+    department: "Engineering",
+    bio: "Leads engineering, overseeing equipment reliability, maintenance planning and technical standards.",
+    focus: ["Reliability", "Maintenance", "Standards"],
+    detail:
+      "Faustine leads engineering — equipment reliability, maintenance planning and technical standards that keep reach-stackers, yard gear and plant available when cargo needs to move.",
+  },
+  {
+    name: "Chrispass Mwamachi",
+    role: "Procurement Head",
+    department: "Procurement",
+    bio: "Leads procurement, managing sourcing, supplier relationships and materials availability.",
+    focus: ["Sourcing", "Suppliers", "Materials"],
+    detail:
+      "Chrispass leads procurement — sourcing, supplier relationships and materials availability so operations never wait on the wrong part or the wrong partner.",
+  },
+  {
+    name: "Ahmed Razeen",
+    role: "Workshop Head",
+    department: "Workshop",
+    bio: "Leads workshop operations, keeping the fleet and yard equipment serviced and available.",
+    focus: ["Fleet", "Service", "Uptime"],
+    detail:
+      "Ahmed leads workshop operations — servicing fleet and yard equipment so trucks and handling gear stay available for corridor and terminal demand.",
+  },
+  {
+    name: "Shonronal Joseph",
+    role: "Finance Head",
+    department: "Finance",
+    bio: "Leads the finance function, covering financial control, reporting and commercial governance.",
+    focus: ["Control", "Reporting", "Governance"],
+    detail:
+      "Shonronal leads finance — financial control, reporting and commercial governance that keep Hesu accountable to clients, partners and the board.",
+  },
+  {
+    name: "Steven Nguma",
+    role: "Transport Head",
+    department: "Transport",
+    bio: "Leads transport operations, coordinating fleet deployment and corridor movements.",
+    focus: ["Fleet", "Corridors", "Deployment"],
+    detail:
+      "Steven leads transport operations — fleet deployment and corridor movements across Tanzania and neighbouring markets, with an emphasis on disciplined routing and on-time delivery.",
+  },
+  {
+    name: "Maliki Omary",
+    role: "Security Head",
+    department: "Security",
+    bio: "Leads security, protecting cargo, people and facilities through trained in-house teams.",
+    focus: ["Cargo care", "Guarding", "Discipline"],
+    detail:
+      "Maliki leads security — protecting cargo, people and facilities through trained in-house teams. Drill, discipline and accountability sit at the centre of every shift.",
+  },
+  {
+    name: "Aristid Temu",
+    role: "ICD Operations Head",
+    department: "ICD",
+    bio: "Leads inland container depot operations, from yard planning to container handling and release.",
+    focus: ["Yard", "Handling", "Release"],
+    detail:
+      "Aristid leads inland container depot operations — yard planning, container handling and release — so bonded cargo moves with speed and clarity.",
+  },
+  {
+    name: "Fabian Godefrey",
+    role: "Port Operations Head",
+    department: "Port",
+    bio: "Leads port operations, coordinating quayside interfaces, gate flows and documentation.",
+    focus: ["Port interface", "Gates", "Docs"],
+    detail:
+      "Fabian leads port operations — quayside interfaces, gate flows and documentation that connect Dar es Salaam port activity with Hesu\u2019s inland stack.",
+  },
+  {
+    name: "Issa Kanyunya",
+    role: "CFS Operations Head",
+    department: "CFS",
+    bio: "Leads container freight station operations, covering stripping, stuffing and cargo custody.",
+    focus: ["LCL", "Stuffing", "Custody"],
+    detail:
+      "Issa leads container freight station operations — stripping, stuffing and cargo custody for groupage and value-added handling under secure, bonded conditions.",
+  },
 ];
 
 const values = [
-  { k: "Leadership", v: "Experienced operators who have shaped the region’s logistics landscape for more than a decade." },
+  { k: "Leadership", v: "Experienced operators who have shaped the region\u2019s logistics landscape for more than a decade." },
   { k: "Ownership", v: "Every team member owns the outcome — from the port gate to the final mile." },
   { k: "Growth", v: "We invest in people, training and systems that let our talent scale with our clients." },
   { k: "Trust", v: "Transparent, accountable teams build the long-term partnerships that move East African trade." },
 ];
 
-
-
 function Team() {
+  const [selected, setSelected] = useState<TeamMember | null>(null);
+  const [open, setOpen] = useState(false);
+  const flipping = useRef(false);
+
+  const selectMember = (member: TeamMember) => {
+    setSelected(member);
+    setOpen(true);
+    flipping.current = false;
+  };
+
   return (
     <>
       <section className="relative isolate overflow-hidden bg-ink text-cream fx-grain">
@@ -88,7 +206,7 @@ function Team() {
           </Reveal>
           <Reveal delay={140} from="right">
             <p className="text-base leading-relaxed text-ink-soft md:text-lg">
-              Hesu’s strength is its people. Our leadership team combines deep logistics experience,
+              Hesu&apos;s strength is its people. Our leadership team combines deep logistics experience,
               local market knowledge and a shared commitment to delivering for every client — every day.
             </p>
           </Reveal>
@@ -98,14 +216,23 @@ function Team() {
           {executives.map((p, i) => (
             <Reveal key={`${p.name}-${p.role}`} delay={i * 110} from="blur">
               <Tilt intensity={6}>
-                <div className="group fx-lift flex h-full flex-col gap-5 overflow-hidden rounded-sm border border-border bg-card p-6 hover:border-amber">
+                <button
+                  type="button"
+                  aria-label={`View profile for ${p.name}, ${p.role}`}
+                  onClick={(e) => {
+                    if (flipping.current) return;
+                    flipping.current = true;
+                    openMemberWithFlip(e.currentTarget, () => selectMember(p));
+                  }}
+                  className="group fx-lift flex h-full w-full cursor-pointer flex-col gap-5 overflow-hidden rounded-sm border border-border bg-card p-6 text-left hover:border-amber"
+                >
                   <ProfileAvatar member={p} className="aspect-[4/3] w-full" />
                   <div>
                     <h3 className="font-display text-xl font-black">{p.name}</h3>
                     <p className="mt-1 text-sm font-semibold text-amber">{p.role}</p>
                   </div>
                   <p className="text-sm leading-relaxed text-ink-soft">{p.bio}</p>
-                </div>
+                </button>
               </Tilt>
             </Reveal>
           ))}
@@ -121,11 +248,10 @@ function Team() {
             </h2>
           </Reveal>
           <div className="mt-16">
-            <LeadershipCarousel members={leadership} />
+            <LeadershipCarousel members={leadership} onSelect={selectMember} />
           </div>
         </div>
       </section>
-
 
       <section className="mx-auto max-w-[1400px] px-5 py-24 md:px-10">
         <Reveal>
@@ -154,8 +280,8 @@ function Team() {
                 Join the team<br /><span className="text-amber">shaping trade.</span>
               </h2>
               <Magnetic strength={0.2}>
-                <Link to="/contact" className="fx-shine inline-flex w-fit items-center gap-2 rounded-sm bg-amber px-6 py-3.5 text-sm font-semibold text-ink hover:-translate-y-0.5 transition-transform duration-500">
-                  Careers & enquiries <span aria-hidden>→</span>
+                <Link to="/careers" className="fx-shine inline-flex w-fit items-center gap-2 rounded-sm bg-amber px-6 py-3.5 text-sm font-semibold text-ink hover:-translate-y-0.5 transition-transform duration-500">
+                  Careers &amp; enquiries <span aria-hidden>→</span>
                 </Link>
               </Magnetic>
             </div>
@@ -163,6 +289,14 @@ function Team() {
         </Reveal>
       </section>
 
+      <TeamMemberDialog
+        member={selected}
+        open={open}
+        onOpenChange={(next) => {
+          setOpen(next);
+          if (!next) flipping.current = false;
+        }}
+      />
     </>
   );
 }
