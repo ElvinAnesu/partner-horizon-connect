@@ -14,14 +14,14 @@ import serviceIcd from "@/assets/service-icd.jpg";
 import serviceCfs from "@/assets/service-cfs.jpg";
 import serviceDistribution from "@/assets/service-distribution.jpg";
 import aboutCta from "@/assets/about-cta.jpg";
-import leaderMd from "@/assets/leader-md.jpg";
-import leaderCeo from "@/assets/leader-ceo.jpg";
+import leaderMale from "@/assets/img/male.jpg";
+import leaderFemale from "@/assets/img/female.jpg";
 import sunilBalan from "@/assets/img/team/sunil.jpeg";
-import teamInspection from "@/assets/hesu-team-inspection.jpg.asset.json";
-import teamDrill from "@/assets/hesu-team-drill.jpg.asset.json";
-import csrFood from "@/assets/csr-food.jpg.asset.json";
-import csrWalk from "@/assets/csr-walk.jpg.asset.json";
-import csrCert from "@/assets/csr-certificate.jpg.asset.json";
+import security2Img from "@/assets/img/security2.jpg";
+import securityImg from "@/assets/img/security.jpg";
+import community1 from "@/assets/img/community/comunity1.jpg";
+import community2 from "@/assets/img/community/comunity2.JPG";
+import community3 from "@/assets/img/community/comunity3.JPG";
 import { galleryImages } from "@/lib/gallery-images";
 
 const heroSlides: { src: string; alt: string }[] = galleryImages.map((src, i) => ({
@@ -77,8 +77,8 @@ const testimonials = [
   { q: "Real people, real trucks, real accountability. Not a broker — an operator.", n: "Grace L.", r: "Logistics Manager, retail chain" },
 ];
 const leaders = [
-  { name: "S. Alhilal", role: "Managing Director", img: leaderMd, bio: "Strategic lead driving Hesu's growth across Tanzania and the wider EAC corridor." },
-  { name: "S. Alhilal", role: "Chief Executive Officer", img: leaderCeo, bio: "Sets the group's direction across terminal, yard, fleet and corridor operations." },
+  { name: "S. Alhilal", role: "Managing Director", img: leaderMale, bio: "Strategic lead driving Hesu's growth across Tanzania and the wider EAC corridor." },
+  { name: "S. Alhilal", role: "Chief Executive Officer", img: leaderFemale, bio: "Sets the group's direction across terminal, yard, fleet and corridor operations." },
   { name: "Sunil Balan", role: "Business Head", img: sunilBalan, bio: "29+ years in supply chain and logistics — ICD, CFS, warehousing and fleet leadership across Africa and Asia.", imagePosition: "object-top" },
 ];
 
@@ -332,7 +332,7 @@ function Home() {
             <Reveal from="scale" className="col-span-2">
               <div className="group relative aspect-[16/9] overflow-hidden rounded-sm">
                 <img
-                  src={teamDrill.url}
+                  src={securityImg}
                   alt="Hesu security team on drill formation"
                   loading="lazy"
                   className="h-full w-full object-cover ken-burns"
@@ -344,7 +344,7 @@ function Home() {
             <Reveal from="scale" delay={120}>
               <div className="relative aspect-square overflow-hidden rounded-sm">
                 <img
-                  src={teamInspection.url}
+                  src={security2Img}
                   alt="Security inspection at Hesu yard"
                   loading="lazy"
                   className="h-full w-full object-cover transition-transform duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] hover:scale-110"
@@ -455,13 +455,13 @@ function Home() {
         <div className="grid gap-14 md:grid-cols-[1.1fr_1fr] md:items-center">
           <div className="grid grid-cols-6 grid-rows-6 gap-3 h-[420px] md:h-[560px]">
             <div className="col-span-4 row-span-4 overflow-hidden rounded-sm">
-              <img src={csrWalk.url} alt="Community walk" className="h-full w-full object-cover ken-burns" loading="lazy" />
+              <img src={community1} alt="Community gathering" className="h-full w-full object-cover ken-burns" loading="lazy" />
             </div>
             <div className="col-span-2 row-span-3 overflow-hidden rounded-sm">
-              <img src={csrFood.url} alt="Food drive" className="h-full w-full object-cover" loading="lazy" />
+              <img src={community2} alt="Community walk" className="h-full w-full object-cover" loading="lazy" />
             </div>
             <div className="col-span-2 row-span-3 overflow-hidden rounded-sm">
-              <img src={csrCert.url} alt="Certificate" className="h-full w-full object-cover" loading="lazy" />
+              <img src={community3} alt="Community jogging event" className="h-full w-full object-cover" loading="lazy" />
             </div>
             <div className="col-span-4 row-span-2 overflow-hidden rounded-sm bg-ink p-5 text-cream flex items-end">
               <p className="font-display text-xl font-black leading-tight md:text-2xl">
@@ -477,9 +477,6 @@ function Home() {
               youth training and cleaner logistics. It's not sponsorship, it's family.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <Link to="/community" className="inline-flex items-center gap-2 rounded-sm bg-ink px-6 py-3.5 text-sm font-semibold text-cream hover:-translate-y-0.5 transition-transform">
-                Our community work <span aria-hidden>→</span>
-              </Link>
               <Link to="/gallery" className="inline-flex items-center gap-2 rounded-sm border border-border px-6 py-3.5 text-sm font-semibold text-ink hover:border-ink transition-colors">
                 Full gallery
               </Link>
@@ -552,12 +549,12 @@ function Home() {
         <Reveal>
           <div className="flex flex-col items-start justify-between gap-6 rounded-sm border border-border bg-secondary p-8 md:flex-row md:items-center md:p-10">
             <div>
-              <p className="eyebrow text-ink-soft">/ We&apos;re hiring</p>
+              <p className="eyebrow text-ink-soft">/ Careers</p>
               <h2 className="mt-3 font-display text-2xl font-black md:text-3xl">
-                Transit Driver — join the Hesu fleet.
+                No current vacancies.
               </h2>
               <p className="mt-2 max-w-xl text-sm text-ink-soft">
-                Corridor routes across Tanzania and the EAC. Apply in minutes.
+                Check back soon, or send a general enquiry to HR.
               </p>
             </div>
             <Magnetic strength={0.2}>

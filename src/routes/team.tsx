@@ -3,7 +3,7 @@ import { useRef, useState } from "react";
 import aboutCta from "@/assets/about-cta.jpg";
 import sunilBalan from "@/assets/img/team/sunil.jpeg";
 import salimMkongo from "@/assets/img/team/salim.jpeg";
-import gainTawodzera from "@/assets/img/team/gain.jpeg";
+import gainTawodzera from "@/assets/img/team/gain.png";
 
 import { Reveal, Tilt, Aurora, Magnetic } from "@/components/fx";
 import { LeadershipCarousel, ProfileAvatar, openMemberWithFlip, type TeamMember } from "@/components/leadership-carousel";
@@ -29,8 +29,17 @@ const executives: TeamMember[] = [
     department: "Executive",
     bio: "Strategic leader driving Hesu\u2019s growth across Tanzania and the wider EAC corridor.",
     focus: ["Strategy", "Growth", "EAC corridor"],
-    detail:
-      "As Managing Director, S. Alhilal sets the strategic pace for Hesu across Tanzania and the wider EAC corridor — aligning terminal, yard and fleet capacity with the way Africa trades. The focus is long-term partnerships, operational discipline and growth that compounds for clients and communities.",
+    detail: {
+      sections: [
+        {
+          items: [
+            "Sets Hesu\u2019s strategic direction across Tanzania and the wider EAC corridor.",
+            "Aligns terminal, yard and fleet capacity with the way Africa trades.",
+            "Focuses on long-term partnerships, operational discipline and growth that compounds for clients and communities.",
+          ],
+        },
+      ],
+    },
   },
   {
     name: "S. Alhilal",
@@ -38,8 +47,17 @@ const executives: TeamMember[] = [
     department: "Executive",
     bio: "Sets the group\u2019s direction across terminal, yard, fleet and corridor operations.",
     focus: ["Operations", "Direction", "Accountability"],
-    detail:
-      "As Chief Executive Officer, S. Alhilal directs Hesu\u2019s day-to-day and long-range operating model across terminal, yard, fleet and corridor lines. The mandate is clear ownership at every node — from port interface to final delivery — with integrity and measurable results.",
+    detail: {
+      sections: [
+        {
+          items: [
+            "Directs Hesu\u2019s day-to-day and long-range operating model across terminal, yard, fleet and corridor lines.",
+            "Requires clear ownership at every node — from port interface to final delivery.",
+            "Holds the organisation to integrity and measurable results.",
+          ],
+        },
+      ],
+    },
   },
   {
     name: "Sunil Balan",
@@ -49,8 +67,19 @@ const executives: TeamMember[] = [
     imagePosition: "object-top",
     bio: "Supply chain and logistics executive with 29+ years of international experience across ICD, CFS, warehousing and fleet operations.",
     focus: ["Supply chain", "ICD / CFS", "Fleet ops", "Procurement"],
-    detail:
-      "Sunilkumar Gopichand Balani is a Supply Chain and Logistics executive with over 29 years of international experience spanning logistics, oil & gas, EPC, petrochemicals, power generation, shipbuilding, chemicals, beverages, and manufacturing. He has held senior leadership positions across Africa and Asia, leading large-scale supply chain, warehousing, procurement, transportation, and operational excellence initiatives.\n\nCurrently serving in Tanzania, Sunil has played a pivotal role in developing and managing integrated logistics operations, including Inland Container Depots (ICD), Container Freight Stations (CFS), warehousing facilities, fertilizer terminals, and fleet operations exceeding 300 vehicles. He has delivered complex logistics projects across East and Southern Africa while driving automation, cost optimization, process improvement, and customer satisfaction.\n\nAn MBA-qualified Supply Chain professional and Mechanical Engineer, Sunil brings deep expertise in strategic sourcing, procurement, contract management, inventory optimization, ERP systems, and supply chain transformation — consistently delivering operational efficiencies, cost savings, and sustainable business growth.",
+    detail: {
+      sections: [
+        {
+          items: [
+            "Supply Chain and Logistics executive with over 29 years of international experience spanning logistics, oil & gas, EPC, petrochemicals, power generation, shipbuilding, chemicals, beverages, and manufacturing.",
+            "Held senior leadership positions across Africa and Asia, leading large-scale supply chain, warehousing, procurement, transportation, and operational excellence initiatives.",
+            "Currently serving in Tanzania, with a pivotal role in developing and managing integrated logistics operations — including Inland Container Depots (ICD), Container Freight Stations (CFS), warehousing facilities, fertilizer terminals, and fleet operations exceeding 300 vehicles.",
+            "Delivered complex logistics projects across East and Southern Africa while driving automation, cost optimization, process improvement, and customer satisfaction.",
+            "MBA-qualified Supply Chain professional and Mechanical Engineer, with expertise in strategic sourcing, procurement, contract management, inventory optimization, ERP systems, and supply chain transformation.",
+          ],
+        },
+      ],
+    },
   },
 ];
 
@@ -63,8 +92,40 @@ const leadership: TeamMember[] = [
     imagePosition: "object-top",
     bio: "IT Head with credentials in business management, information technology, MBA Data Analytics, and enterprise systems (SAP, Oracle, CISA).",
     focus: ["IT systems", "Data analytics", "ERP"],
-    detail:
-      "Gain Tawodzera leads Hesu\u2019s IT function with a strong academic and professional foundation in technology and business systems.\n\nDegrees\nBusiness Management and Information Technology (BBMIT)\nBachelor\u2019s in Information Technology\n\nMasters\nMBA — Data Analytics\n\nCertificates\nSAP B1 Associate (C_TB120)\nCISA\nEssentials of SAP GRC\nOracle Cloud Infrastructure\nOracle Cloud Data Migration\nElectronic Data Processing\nISO1\nITIL 3\n\nMembership\nISACA\nAdvisera",
+    detail: {
+      intro:
+        "Leads Hesu\u2019s IT function with a strong academic and professional foundation in technology and business systems.",
+      sections: [
+        {
+          heading: "Degrees",
+          items: [
+            "Business Management and Information Technology (BBMIT)",
+            "Bachelor\u2019s in Information Technology",
+          ],
+        },
+        {
+          heading: "Masters",
+          items: ["MBA — Data Analytics"],
+        },
+        {
+          heading: "Certificates",
+          items: [
+            "SAP B1 Associate (C_TB120)",
+            "CISA",
+            "Essentials of SAP GRC",
+            "Oracle Cloud Infrastructure",
+            "Oracle Cloud Data Migration",
+            "Electronic Data Processing",
+            "ISO1",
+            "ITIL 3",
+          ],
+        },
+        {
+          heading: "Membership",
+          items: ["ISACA", "Advisera"],
+        },
+      ],
+    },
   },
   {
     name: "Neema Mtui",
@@ -72,8 +133,16 @@ const leadership: TeamMember[] = [
     department: "HSE",
     bio: "Leads health, safety and environment, upholding safe working standards across every site and operation.",
     focus: ["Safety", "Environment", "Standards"],
-    detail:
-      "Neema leads health, safety and environment across Hesu sites — from yards and workshops to corridor movements. The priority is clear standards, trained teams and a culture where every container move is also a safe move.",
+    detail: {
+      sections: [
+        {
+          items: [
+            "Leads health, safety and environment across Hesu sites — from yards and workshops to corridor movements.",
+            "Prioritises clear standards, trained teams and a culture where every container move is also a safe move.",
+          ],
+        },
+      ],
+    },
   },
   {
     name: "Meheroon Kassu",
@@ -81,8 +150,16 @@ const leadership: TeamMember[] = [
     department: "People",
     bio: "Leads the human resources function, covering people development, welfare and organizational capability.",
     focus: ["People", "Welfare", "Capability"],
-    detail:
-      "Meheroon leads human resources at Hesu — people development, welfare and organizational capability. From recruitment to on-the-job growth, the focus is building teams that own outcomes from gate to final mile.",
+    detail: {
+      sections: [
+        {
+          items: [
+            "Leads human resources at Hesu — people development, welfare and organizational capability.",
+            "Focuses on building teams that own outcomes from gate to final mile, from recruitment to on-the-job growth.",
+          ],
+        },
+      ],
+    },
   },
   {
     name: "Faustine Shilinde",
@@ -90,8 +167,16 @@ const leadership: TeamMember[] = [
     department: "Engineering",
     bio: "Leads engineering, overseeing equipment reliability, maintenance planning and technical standards.",
     focus: ["Reliability", "Maintenance", "Standards"],
-    detail:
-      "Faustine leads engineering — equipment reliability, maintenance planning and technical standards that keep reach-stackers, yard gear and plant available when cargo needs to move.",
+    detail: {
+      sections: [
+        {
+          items: [
+            "Leads engineering — equipment reliability, maintenance planning and technical standards.",
+            "Keeps reach-stackers, yard gear and plant available when cargo needs to move.",
+          ],
+        },
+      ],
+    },
   },
   {
     name: "Chrispass Mwamachi",
@@ -99,8 +184,16 @@ const leadership: TeamMember[] = [
     department: "Procurement",
     bio: "Leads procurement, managing sourcing, supplier relationships and materials availability.",
     focus: ["Sourcing", "Suppliers", "Materials"],
-    detail:
-      "Chrispass leads procurement — sourcing, supplier relationships and materials availability so operations never wait on the wrong part or the wrong partner.",
+    detail: {
+      sections: [
+        {
+          items: [
+            "Leads procurement — sourcing, supplier relationships and materials availability.",
+            "Ensures operations never wait on the wrong part or the wrong partner.",
+          ],
+        },
+      ],
+    },
   },
   {
     name: "Ahmed Razeen",
@@ -108,8 +201,16 @@ const leadership: TeamMember[] = [
     department: "Workshop",
     bio: "Leads workshop operations, keeping the fleet and yard equipment serviced and available.",
     focus: ["Fleet", "Service", "Uptime"],
-    detail:
-      "Ahmed leads workshop operations — servicing fleet and yard equipment so trucks and handling gear stay available for corridor and terminal demand.",
+    detail: {
+      sections: [
+        {
+          items: [
+            "Leads workshop operations — servicing fleet and yard equipment.",
+            "Keeps trucks and handling gear available for corridor and terminal demand.",
+          ],
+        },
+      ],
+    },
   },
   {
     name: "Shonronal Joseph",
@@ -117,8 +218,16 @@ const leadership: TeamMember[] = [
     department: "Finance",
     bio: "Leads the finance function, covering financial control, reporting and commercial governance.",
     focus: ["Control", "Reporting", "Governance"],
-    detail:
-      "Shonronal leads finance — financial control, reporting and commercial governance that keep Hesu accountable to clients, partners and the board.",
+    detail: {
+      sections: [
+        {
+          items: [
+            "Leads finance — financial control, reporting and commercial governance.",
+            "Keeps Hesu accountable to clients, partners and the board.",
+          ],
+        },
+      ],
+    },
   },
   {
     name: "Steven Nguma",
@@ -126,8 +235,16 @@ const leadership: TeamMember[] = [
     department: "Transport",
     bio: "Leads transport operations, coordinating fleet deployment and corridor movements.",
     focus: ["Fleet", "Corridors", "Deployment"],
-    detail:
-      "Steven leads transport operations — fleet deployment and corridor movements across Tanzania and neighbouring markets, with an emphasis on disciplined routing and on-time delivery.",
+    detail: {
+      sections: [
+        {
+          items: [
+            "Leads transport operations — fleet deployment and corridor movements across Tanzania and neighbouring markets.",
+            "Emphasises disciplined routing and on-time delivery.",
+          ],
+        },
+      ],
+    },
   },
   {
     name: "Maliki Omary",
@@ -135,8 +252,16 @@ const leadership: TeamMember[] = [
     department: "Security",
     bio: "Leads security, protecting cargo, people and facilities through trained in-house teams.",
     focus: ["Cargo care", "Guarding", "Discipline"],
-    detail:
-      "Maliki leads security — protecting cargo, people and facilities through trained in-house teams. Drill, discipline and accountability sit at the centre of every shift.",
+    detail: {
+      sections: [
+        {
+          items: [
+            "Leads security — protecting cargo, people and facilities through trained in-house teams.",
+            "Centres every shift on drill, discipline and accountability.",
+          ],
+        },
+      ],
+    },
   },
   {
     name: "Aristid Temu",
@@ -144,8 +269,16 @@ const leadership: TeamMember[] = [
     department: "ICD",
     bio: "Leads inland container depot operations, from yard planning to container handling and release.",
     focus: ["Yard", "Handling", "Release"],
-    detail:
-      "Aristid leads inland container depot operations — yard planning, container handling and release — so bonded cargo moves with speed and clarity.",
+    detail: {
+      sections: [
+        {
+          items: [
+            "Leads inland container depot operations — yard planning, container handling and release.",
+            "Ensures bonded cargo moves with speed and clarity.",
+          ],
+        },
+      ],
+    },
   },
   {
     name: "Fabian Godefrey",
@@ -153,8 +286,16 @@ const leadership: TeamMember[] = [
     department: "Port",
     bio: "Leads port operations, coordinating quayside interfaces, gate flows and documentation.",
     focus: ["Port interface", "Gates", "Docs"],
-    detail:
-      "Fabian leads port operations — quayside interfaces, gate flows and documentation that connect Dar es Salaam port activity with Hesu\u2019s inland stack.",
+    detail: {
+      sections: [
+        {
+          items: [
+            "Leads port operations — quayside interfaces, gate flows and documentation.",
+            "Connects Dar es Salaam port activity with Hesu\u2019s inland stack.",
+          ],
+        },
+      ],
+    },
   },
   {
     name: "Issa Kanyunya",
@@ -162,8 +303,16 @@ const leadership: TeamMember[] = [
     department: "CFS",
     bio: "Leads container freight station operations, covering stripping, stuffing and cargo custody.",
     focus: ["LCL", "Stuffing", "Custody"],
-    detail:
-      "Issa leads container freight station operations — stripping, stuffing and cargo custody for groupage and value-added handling under secure, bonded conditions.",
+    detail: {
+      sections: [
+        {
+          items: [
+            "Leads container freight station operations — stripping, stuffing and cargo custody.",
+            "Handles groupage and value-added cargo under secure, bonded conditions.",
+          ],
+        },
+      ],
+    },
   },
   {
     name: "Salim Mkongo",
@@ -173,8 +322,20 @@ const leadership: TeamMember[] = [
     imagePosition: "object-top",
     bio: "Electrical and Electronics Engineer leading heavy equipment maintenance, machinery operations and technical teams at Hesu.",
     focus: ["Maintenance", "Heavy equipment", "Uptime"],
-    detail:
-      "Salim Mkongo is an experienced Electrical and Electronics Engineer with a strong background in heavy equipment maintenance, machinery operations, and technical leadership. He holds a Bachelor\u2019s Degree in Electrical and Electronics Engineering, supported by an Ordinary Diploma in Electronics and Telecommunications Engineering.\n\nWith professional experience spanning the mining and machinery sectors, Salim has worked with leading organizations including Shanta Gold Mine and Mantrac Tanzania, where he developed extensive expertise in equipment maintenance, diagnostics, and operational efficiency. His hands-on experience with heavy machinery and industrial systems has enabled him to successfully manage complex maintenance challenges while ensuring maximum equipment reliability and uptime.\n\nCurrently serving as Machinery Supervisor at HESU Investments Ltd, Salim oversees machinery operations, preventive and corrective maintenance programs, and the performance of technical teams. He is responsible for ensuring that equipment operates safely, efficiently, and in alignment with organizational objectives.\n\nPassionate about machinery reliability, continuous improvement, and problem-solving, Salim is committed to building efficient maintenance systems that enhance productivity, reduce downtime, and support sustainable operational excellence.",
+    detail: {
+      sections: [
+        {
+          items: [
+            "Electrical and Electronics Engineer with a strong background in heavy equipment maintenance, machinery operations, and technical leadership.",
+            "Holds a Bachelor\u2019s Degree in Electrical and Electronics Engineering, supported by an Ordinary Diploma in Electronics and Telecommunications Engineering.",
+            "Professional experience spanning mining and machinery, including Shanta Gold Mine and Mantrac Tanzania, covering equipment maintenance, diagnostics, and operational efficiency.",
+            "Hands-on experience with heavy machinery and industrial systems, managing complex maintenance challenges while ensuring maximum equipment reliability and uptime.",
+            "Currently serving as Machinery Supervisor at HESU Investments Ltd, overseeing machinery operations, preventive and corrective maintenance programs, and the performance of technical teams.",
+            "Committed to machinery reliability, continuous improvement, and building efficient maintenance systems that enhance productivity, reduce downtime, and support sustainable operational excellence.",
+          ],
+        },
+      ],
+    },
   },
 ];
 
@@ -229,8 +390,8 @@ function Team() {
 
         <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {executives.map((p, i) => (
-            <Reveal key={`${p.name}-${p.role}`} delay={i * 110} from="blur">
-              <Tilt intensity={6}>
+            <Reveal key={`${p.name}-${p.role}`} delay={i * 110} from="blur" className="h-full">
+              <Tilt intensity={6} className="h-full">
                 <button
                   type="button"
                   aria-label={`View profile for ${p.name}, ${p.role}`}
@@ -241,12 +402,12 @@ function Team() {
                   }}
                   className="group fx-lift flex h-full w-full cursor-pointer flex-col gap-5 overflow-hidden rounded-sm border border-border bg-card p-6 text-left hover:border-amber"
                 >
-                  <ProfileAvatar member={p} className="aspect-[4/3] w-full" />
+                  <ProfileAvatar member={p} className="aspect-square w-full" />
                   <div>
                     <h3 className="font-display text-xl font-black">{p.name}</h3>
                     <p className="mt-1 text-sm font-semibold text-amber">{p.role}</p>
                   </div>
-                  <p className="text-sm leading-relaxed text-ink-soft">{p.bio}</p>
+                  <p className="line-clamp-2 min-h-[2lh] text-sm leading-relaxed text-ink-soft">{p.bio}</p>
                 </button>
               </Tilt>
             </Reveal>

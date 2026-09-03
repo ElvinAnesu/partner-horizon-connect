@@ -41,10 +41,6 @@ function Contact() {
             </a>
           </div>
           <div>
-            <p className="eyebrow text-amber">Phone</p>
-            <p className="mt-3 font-display text-xl font-black">+255 000 000 000</p>
-          </div>
-          <div>
             <p className="eyebrow text-amber">Hours</p>
             <p className="mt-3 text-ink-soft">Operations: 24 / 7<br />Office: Mon–Sat, 08:00–18:00 EAT</p>
           </div>

@@ -2,6 +2,14 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { Reveal, Tilt } from "@/components/fx";
 import { cn } from "@/lib/utils";
 
+export type TeamMemberDetail = {
+  intro?: string;
+  sections: {
+    heading?: string;
+    items: string[];
+  }[];
+};
+
 export type TeamMember = {
   name: string;
   role: string;
@@ -11,7 +19,7 @@ export type TeamMember = {
   department?: string;
   focus?: string[];
   /** Longer profile copy for the dialog; falls back to bio. */
-  detail?: string;
+  detail?: TeamMemberDetail;
   /** Tailwind object-position class for portrait crops, e.g. "object-top". */
   imagePosition?: string;
 };
@@ -143,14 +151,14 @@ export function LeadershipCard({
           onSelect ? "cursor-pointer" : ""
         }`}
       >
-        <ProfileAvatar member={member} className="aspect-[4/3] w-full" />
+        <ProfileAvatar member={member} className="aspect-square w-full" />
         <div className="flex flex-1 flex-col gap-2 p-5">
           <h3 className="font-display text-lg font-black leading-tight">{member.name}</h3>
           <p className="relative w-fit text-sm font-semibold text-amber">
             {member.role}
             <span className="absolute -bottom-1 left-0 h-px w-full origin-left scale-x-0 bg-amber transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-x-100" />
           </p>
-          <p className="mt-2 text-sm leading-relaxed text-ink-soft opacity-80 transition-opacity duration-500 group-hover:opacity-100">
+          <p className="mt-2 line-clamp-2 min-h-[2lh] text-sm leading-relaxed text-ink-soft opacity-80 transition-opacity duration-500 group-hover:opacity-100">
             {member.bio}
           </p>
         </div>

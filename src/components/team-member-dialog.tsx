@@ -34,7 +34,7 @@ export function TeamMemberDialog({ member, open, onOpenChange }: TeamMemberDialo
               <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/50 via-transparent to-transparent md:bg-gradient-to-r md:from-transparent md:to-ink/10" />
             </div>
 
-            <div className="flex flex-col justify-center gap-6 bg-background p-8 md:p-10 lg:p-12">
+            <div className="flex min-h-0 flex-col justify-start gap-6 overflow-y-auto bg-background p-8 pt-12 pr-12 md:p-12 md:pt-14 md:pr-16 lg:p-14">
               <div>
                 <p className="eyebrow text-amber">
                   / {member.department ?? "Leadership"}
@@ -63,13 +63,41 @@ export function TeamMemberDialog({ member, open, onOpenChange }: TeamMemberDialo
 
               <div>
                 <p className="eyebrow text-ink-soft">About</p>
-                <div className="mt-3 space-y-4 text-sm leading-relaxed text-ink-soft md:text-base">
-                  {(member.detail ?? member.bio).split(/\n\n+/).map((para) => (
-                    <p key={para.slice(0, 48)} className="whitespace-pre-line">
-                      {para}
-                    </p>
-                  ))}
-                </div>
+                {member.detail ? (
+                  <div className="mt-3">
+                    {member.detail.intro && (
+                      <p className="text-sm leading-relaxed text-ink-soft md:text-base">{member.detail.intro}</p>
+                    )}
+                    {member.detail.sections.map((section, index) => (
+                      <div
+                        key={section.heading ?? section.items[0]}
+                        className={index > 0 || member.detail?.intro ? "mt-5" : undefined}
+                      >
+                        {section.heading && (
+                          <p className="eyebrow text-ink-soft">{section.heading}</p>
+                        )}
+                        <ul
+                          className={cn(
+                            "space-y-2.5 text-sm leading-relaxed text-ink-soft md:text-base",
+                            section.heading && "mt-3",
+                          )}
+                        >
+                          {section.items.map((item) => (
+                            <li key={item} className="flex gap-3">
+                              <span
+                                aria-hidden
+                                className="mt-[0.55em] h-1.5 w-1.5 shrink-0 rounded-full bg-amber"
+                              />
+                              <span>{item}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <p className="mt-3 text-sm leading-relaxed text-ink-soft md:text-base">{member.bio}</p>
+                )}
               </div>
 
               <div className="pt-2">

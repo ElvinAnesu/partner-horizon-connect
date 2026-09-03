@@ -10,7 +10,6 @@ const nav = [
   { to: "/services", label: "Services" },
   { to: "/team", label: "Team" },
   { to: "/gallery", label: "Gallery" },
-  { to: "/community", label: "Community" },
   { to: "/careers", label: "Careers" },
   { to: "/contact", label: "Contact" },
 ] as const;
@@ -124,7 +123,6 @@ export function SiteFooter() {
           <ul className="mt-4 space-y-2 text-sm text-cream/80">
             <li>Dar es Salaam, Tanzania</li>
             <li><a href="mailto:info@hesu.co.tz" className="hover:text-amber">info@hesu.co.tz</a></li>
-            <li>+255 000 000 000</li>
           </ul>
         </div>
       </div>

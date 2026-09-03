@@ -13,6 +13,7 @@ import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { SiteHeader, SiteFooter } from "../components/site-chrome";
 import { ScrollProgress, CursorGlow } from "../components/fx";
+import { HesuChat } from "../components/hesu-chat";
 
 
 function NotFoundComponent() {
@@ -131,6 +132,7 @@ function RootComponent() {
         <Outlet />
       </main>
       <SiteFooter />
+      <HesuChat />
     </QueryClientProvider>
   );
 }
