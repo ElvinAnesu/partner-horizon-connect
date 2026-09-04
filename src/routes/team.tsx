@@ -230,6 +230,23 @@ const leadership: TeamMember[] = [
     },
   },
   {
+    name: "Mbarouk Masoud",
+    role: "Legal and Compliance Head",
+    department: "Legal and Compliance",
+    bio: "Leads legal and compliance, covering regulatory obligations, contracts and governance across Hesu operations.",
+    focus: ["Compliance", "Contracts", "Governance"],
+    detail: {
+      sections: [
+        {
+          items: [
+            "Leads legal and compliance — regulatory obligations, contracts and governance across Hesu operations.",
+            "Keeps terminal, yard and corridor activity aligned with applicable rules and partner requirements.",
+          ],
+        },
+      ],
+    },
+  },
+  {
     name: "Steven Nguma",
     role: "Transport Head",
     department: "Transport",

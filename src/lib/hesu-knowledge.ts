@@ -39,6 +39,7 @@ Team (names and roles only; do not invent personal bios):
 - Chrispass Mwamachi — Procurement Head
 - Ahmed Razeen — Workshop Head
 - Shonronal Joseph — Finance Head
+- Mbarouk Masoud — Legal and Compliance Head
 - Steven Nguma — Transport Head
 - Maliki Omary — Security Head
 - Aristid Temu — ICD Operations Head
