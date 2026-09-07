@@ -1,9 +1,13 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useRef, useState } from "react";
 import aboutCta from "@/assets/about-cta.jpg";
+import salmaAlhilal from "@/assets/img/team/salma.jpeg";
 import sunilBalan from "@/assets/img/team/sunil.jpeg";
 import salimMkongo from "@/assets/img/team/salim.jpeg";
 import gainTawodzera from "@/assets/img/team/gain.png";
+import faustineShilinde from "@/assets/img/team/faustine.jpg";
+import chrispassMwamachi from "@/assets/img/team/chrispass.jpeg";
+import fabianGodfrey from "@/assets/img/team/fabian.jpeg";
 
 import { Reveal, Tilt, Aurora, Magnetic } from "@/components/fx";
 import { LeadershipCarousel, ProfileAvatar, openMemberWithFlip, type TeamMember } from "@/components/leadership-carousel";
@@ -42,9 +46,11 @@ const executives: TeamMember[] = [
     },
   },
   {
-    name: "S. Alhilal",
+    name: "Salma Alhilal",
     role: "Chief Executive Officer",
     department: "Executive",
+    image: salmaAlhilal,
+    imagePosition: "object-top",
     bio: "Sets the group\u2019s direction across terminal, yard, fleet and corridor operations.",
     focus: ["Operations", "Direction", "Accountability"],
     detail: {
@@ -86,7 +92,7 @@ const executives: TeamMember[] = [
 const leadership: TeamMember[] = [
   {
     name: "Gain Tawodzera",
-    role: "IT Head",
+    role: "Group IT Head",
     department: "Technology",
     image: gainTawodzera,
     imagePosition: "object-top",
@@ -105,7 +111,7 @@ const leadership: TeamMember[] = [
         },
         {
           heading: "Masters",
-          items: ["MBA — Data Analytics"],
+          items: ["MSc Data Analytics", "MBA"],
         },
         {
           heading: "Certificates",
@@ -146,7 +152,7 @@ const leadership: TeamMember[] = [
   },
   {
     name: "Meheroon Kassu",
-    role: "HR Head",
+    role: "Group HR Head",
     department: "People",
     bio: "Leads the human resources function, covering people development, welfare and organizational capability.",
     focus: ["People", "Welfare", "Capability"],
@@ -165,31 +171,64 @@ const leadership: TeamMember[] = [
     name: "Faustine Shilinde",
     role: "Engineering Head",
     department: "Engineering",
-    bio: "Leads engineering, overseeing equipment reliability, maintenance planning and technical standards.",
-    focus: ["Reliability", "Maintenance", "Standards"],
+    image: faustineShilinde,
+    imagePosition: "object-top",
+    bio: "Registered Professional Civil Engineer with an MSc in Construction Economics and Management and 15+ years in construction, civil works, water resources, bridges and design.",
+    focus: ["Project management", "Civil engineering", "Safety"],
     detail: {
+      intro:
+        "Registered Professional Civil Engineer and Head of Engineering Services at Hesu, with over fifteen years in construction, civil works, water resources, bridges and structural design.",
       sections: [
         {
+          heading: "Education",
           items: [
-            "Leads engineering — equipment reliability, maintenance planning and technical standards.",
-            "Keeps reach-stackers, yard gear and plant available when cargo needs to move.",
+            "Master of Science in Construction Economics and Management — Ardhi University, Tanzania.",
+            "Bachelor of Science in Civil Engineering — University of Dar es Salaam, College of Engineering and Technology (COET).",
           ],
+        },
+        {
+          heading: "Professional experience",
+          items: [
+            "Head of Engineering Services, Hesu Investment Limited (January 2025 – present) — manages projects with 10 billion+ budgets, improves project efficiency, and leads work with community and LGA engagement.",
+            "Head of Engineering Services, Dumaspeed Company Limited (January 2018 – December 2024) — reduced project costs, oversaw safety compliance and scheduled site operations.",
+            "Civil Engineer, Tanzania Portland Cement Company Limited (July 2013 – December 2017) — delivered projects to technical standards, time and budget, with liaison to TANROADS, TARURA, the Mining Commission and district officers.",
+            "Structural Engineer, Pendharkar and Associates Limited (January 2010 – June 2013) — designed buildings, bridges and water-tank structures and supervised on-site construction.",
+          ],
+        },
+        {
+          heading: "Membership",
+          items: ["Engineering Registration Board (ERB) — registration number 3625"],
         },
       ],
     },
   },
   {
-    name: "Chrispass Mwamachi",
+    name: "Chrispas Mwamachi",
     role: "Procurement Head",
     department: "Procurement",
-    bio: "Leads procurement, managing sourcing, supplier relationships and materials availability.",
-    focus: ["Sourcing", "Suppliers", "Materials"],
+    image: chrispassMwamachi,
+    imagePosition: "object-top",
+    bio: "Procurement specialist with diplomas in procurement and stores management, and a career spanning sourcing, inventory, supplier management and SAP-supported operations across Kenya and Tanzania.",
+    focus: ["Procurement", "Inventory", "SAP"],
     detail: {
+      intro:
+        "Procurement Manager at Hesu with a long career in stores, parts and procurement. Leads sourcing strategy, supplier contracts, inventory control and 100% SAP B1 use for a full audit trail.",
       sections: [
         {
+          heading: "Education",
           items: [
-            "Leads procurement — sourcing, supplier relationships and materials availability.",
-            "Ensures operations never wait on the wrong part or the wrong partner.",
+            "Diploma in Procurement and Materials Management — The Mombasa Polytechnic, Department of Business Studies (2002).",
+            "Advanced Certificate in Stores Management and Certificate in Stores Management — The Mombasa Polytechnic.",
+            "Diploma in Stores Management — Mombasa Universal Group of Colleges (1986–1989), including A.S.P.S / I.P.S. papers in stores administration, material handling and communication.",
+          ],
+        },
+        {
+          heading: "Professional experience",
+          items: [
+            "Procurement Manager, Hesu Investment Limited (2025 – present) — procurement strategy, supplier contracts, cost and risk control, inventory oversight, team leadership and SAP B1 for audit trail.",
+            "Stores / Procurement Manager, H.D. Motors / Swift Motors (Tanzania) Ltd. (2009 – 2025) — parts sourcing for workshop and operations, inventory for trucks and trailers, branch supply to Tunduma and the Congo, and Tally, SAP and Excel records.",
+            "Parts Manager, Nelion Trading Co. Ltd. (2007 – 2008) — procurement, storage and distribution of spare parts for vehicles, motorbikes and generators.",
+            "Earlier stores, parts, fleet and procurement roles in Kenya from 1986, including TransEnergy (Kenya) Ltd., ISK / Trans East Ltd., Doshi Enterprises Ltd. and related operations.",
           ],
         },
       ],
@@ -298,34 +337,47 @@ const leadership: TeamMember[] = [
     },
   },
   {
-    name: "Fabian Godefrey",
-    role: "Port Operations Head",
+    name: "Fabian Godfrey",
+    role: "Assistant ICD Manager",
     department: "Port",
+    image: fabianGodfrey,
+    imagePosition: "object-top",
     bio: "Leads port operations, coordinating quayside interfaces, gate flows and documentation.",
     focus: ["Port interface", "Gates", "Docs"],
     detail: {
       sections: [
         {
           items: [
-            "Leads port operations — quayside interfaces, gate flows and documentation.",
-            "Connects Dar es Salaam port activity with Hesu\u2019s inland stack.",
+            "Supports the management of end-to-end ICD operations, from port transfer and container reception to yard management and final delivery.",
+            "Drives operational efficiency through effective planning, team coordination, KPI monitoring, and continuous process improvement.",
           ],
         },
       ],
     },
   },
   {
-    name: "Issa Kanyunya",
+    name: "Joseph Igogo",
     role: "CFS Operations Head",
     department: "CFS",
-    bio: "Leads container freight station operations, covering stripping, stuffing and cargo custody.",
-    focus: ["LCL", "Stuffing", "Custody"],
+    bio: "MBA (Management) and BA (Economics) with more than 18 years in operations management, administration, logistics, project management, team leadership, and port operations.",
+    focus: ["Operations", "Logistics", "Leadership"],
     detail: {
+      intro:
+        "With more than eighteen years of expertise in logistics, administration, port operations, warehousing, project management, and team leadership, Joseph M. Igogo is a seasoned Tanzanian operations and management specialist.",
       sections: [
         {
+          heading: "Education",
           items: [
-            "Leads container freight station operations — stripping, stuffing and cargo custody.",
-            "Handles groupage and value-added cargo under secure, bonded conditions.",
+            "Master of Business Administration (MBA) — Management, Kansas Newman University, United States of America.",
+            "Bachelor of Arts (BA) — Economics, University of Dar es Salaam, Dar es Salaam, Tanzania.",
+          ],
+        },
+        {
+          heading: "Professional experience",
+          items: [
+            "More than 18 years of professional expertise in operations management, administration, logistics, project management, team leadership, and port operations.",
+            "Strong background in operational planning, budgeting, performance management, staff supervision, process improvement, stakeholder coordination, and policy implementation.",
+            "Results-driven professional with a track record of increasing productivity, cutting expenses, resolving operational issues, and managing teams in challenging work settings.",
           ],
         },
       ],

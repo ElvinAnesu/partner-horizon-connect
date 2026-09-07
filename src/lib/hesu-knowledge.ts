@@ -36,7 +36,7 @@ Team (names and roles only; do not invent personal bios):
 - Neema Mtui — HSE Head
 - Meheroon Kassu — HR Head
 - Faustine Shilinde — Engineering Head
-- Chrispass Mwamachi — Procurement Head
+- Chrispas Mwamachi — Procurement Head
 - Ahmed Razeen — Workshop Head
 - Shonronal Joseph — Finance Head
 - Mbarouk Masoud — Legal and Compliance Head
@@ -44,7 +44,7 @@ Team (names and roles only; do not invent personal bios):
 - Maliki Omary — Security Head
 - Aristid Temu — ICD Operations Head
 - Fabian Godefrey — Port Operations Head
-- Issa Kanyunya — CFS Operations Head
+- Joseph Igogo — CFS Operations Head
 - Salim Mkongo — Machinery Manager
 
 Useful site paths: /about, /services, /team, /gallery, /careers, /contact.
